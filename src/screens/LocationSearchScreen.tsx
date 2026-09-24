@@ -53,7 +53,7 @@ export const LocationSearchScreen: React.FC = () => {
 
                 {/* Destination Input */}
                 <div className="flex items-center gap-3.5">
-                    <div className="w-4 h-4 rounded-full bg-[#0129d1] ring-4 ring-cyan-400/40 shadow-lg shadow-cyan-500/50" />
+                    <div className="w-4 h-4 rounded-full bg-[#0221bf] ring-4  shadow-lg shadow-cyan-500/50" />
                     <div className="flex-1">
                         <label className="block text-[10px] font-black uppercase text-cyan-400 tracking-wider">DESTINATION ADDRESS</label>
                         <input
@@ -101,7 +101,7 @@ export const LocationSearchScreen: React.FC = () => {
             {/* Glowing Action Button */}
             <button
                 onClick={handleConfirm}
-                className="w-full py-4 bg-gradient-to-r from-[#0129d1] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all mt-4 border border-cyan-300/30 active:scale-98"
+                className="w-full py-4 bg-gradient-to-r from-[#0221bf] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all mt-4 border border-cyan-300/30 active:scale-98"
             >
                 Confirm Route & Proceed
             </button>

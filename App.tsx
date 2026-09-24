@@ -1,5 +1,15 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, Platform, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+    StyleSheet,
+    View,
+    Text,
+    Platform,
+    TouchableOpacity,
+    TextInput,
+    ActivityIndicator,
+    SafeAreaView,
+    ScrollView
+} from 'react-native';
 import { WebView } from 'react-native-webview';
 import Constants from 'expo-constants';
 import AppWeb from './src/App';
@@ -9,62 +19,149 @@ export default function App() {
         return <AppWeb />;
     }
 
-    const [hasError, setHasError] = useState(false);
-    const [reloadKey, setReloadKey] = useState(0);
-
-    // Determine dev server IP dynamically from Expo manifest
+    // Determine dev server host dynamically from Expo manifest
     const hostUri = Constants.expoConfig?.hostUri || Constants.manifest2?.extra?.expoGo?.debuggerHost || '';
-    const hostIp = hostUri ? hostUri.split(':')[0] : '10.10.222.80';
 
-    // Priority: local network IP dev server (Vite on port 3000), fallback to public tunnel
-    const targetUrl = hostIp ? `http://${hostIp}:3000` : 'https://young-moons-study.loca.lt';
+    // Check if hostUri contains a standard IPv4 address
+    const ipMatch = hostUri.match(/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/);
+    const detectedIp = ipMatch ? ipMatch[1] : '10.10.222.80';
+    const defaultUrl = `http://${detectedIp}:3000`;
 
-    const handleRetry = () => {
+    const [targetUrl, setTargetUrl] = useState<string>(defaultUrl);
+    const [customInput, setCustomInput] = useState<string>(defaultUrl);
+    const [hasError, setHasError] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [errorMessage, setErrorMessage] = useState<string>('');
+    const [reloadKey, setReloadKey] = useState<number>(0);
+
+    const isTunnelActive = hostUri.includes('exp.direct') || hostUri.includes('ngrok') || hostUri.includes('loca.lt');
+
+    // 7-second safety timeout for WebView loading state
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
+        if (isLoading && !hasError) {
+            timer = setTimeout(() => {
+                setHasError(true);
+                setIsLoading(false);
+                setErrorMessage(
+                    isTunnelActive
+                        ? `Expo Tunnel detected (${hostUri}). Vite web server on port 3000 is not automatically tunneled by Expo. Please enter your local IP (e.g. http://${detectedIp}:3000) or public tunnel URL below.`
+                        : `Could not reach ${targetUrl} within 7 seconds. Please verify Vite dev server ('npm run dev') is running.`
+                );
+            }, 7000);
+        }
+        return () => clearTimeout(timer);
+    }, [isLoading, reloadKey, targetUrl, hasError, isTunnelActive, hostUri, detectedIp]);
+
+    const handleConnect = (urlToConnect?: string) => {
+        const url = (urlToConnect || customInput).trim();
+        let formattedUrl = url;
+        if (!formattedUrl.startsWith('http://') && !formattedUrl.startsWith('https://')) {
+            formattedUrl = `http://${formattedUrl}`;
+        }
+        setTargetUrl(formattedUrl);
+        setCustomInput(formattedUrl);
         setHasError(false);
+        setIsLoading(true);
+        setErrorMessage('');
         setReloadKey(prev => prev + 1);
     };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             {hasError ? (
-                <View style={styles.errorContainer}>
-                    <Text style={styles.errorTitle}>Unable to Connect to Dev Server</Text>
-                    <Text style={styles.errorSubtext}>
-                        Target: {targetUrl}
-                    </Text>
-                    <Text style={styles.errorHint}>
-                        Make sure `npm run dev` is running on your PC and your phone is on the same Wi-Fi network.
-                    </Text>
-                    <TouchableOpacity style={styles.retryButton} onPress={handleRetry}>
-                        <Text style={styles.retryButtonText}>Retry Connection</Text>
-                    </TouchableOpacity>
-                </View>
-            ) : (
-                <WebView
-                    key={reloadKey}
-                    source={{ uri: targetUrl }}
-                    style={styles.webview}
-                    javaScriptEnabled={true}
-                    domStorageEnabled={true}
-                    startInLoadingState={true}
-                    scalesPageToFit={true}
-                    allowsInlineMediaPlayback={true}
-                    mediaPlaybackRequiresUserAction={false}
-                    onError={() => setHasError(true)}
-                    onHttpError={() => setHasError(true)}
-                    renderLoading={() => (
-                        <View style={styles.loadingContainer}>
-                            <Text style={styles.loadingText}>Loading GoNex App...</Text>
+                <ScrollView contentContainerStyle={styles.errorScrollContainer} keyboardShouldPersistTaps="handled">
+                    <View style={styles.errorCard}>
+                        <Text style={styles.errorBadge}>
+                            {isTunnelActive ? 'TUNNEL MODE DETECTED' : 'CONNECTION TIMEOUT'}
+                        </Text>
+                        <Text style={styles.errorTitle}>Dev Server Unreachable</Text>
+
+                        <Text style={styles.errorHint}>
+                            {errorMessage || `Unable to load app from: ${targetUrl}`}
+                        </Text>
+
+                        <View style={styles.inputSection}>
+                            <Text style={styles.inputLabel}>Enter Dev Server / Tunnel URL:</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={customInput}
+                                onChangeText={setCustomInput}
+                                placeholder="http://192.168.x.x:3000"
+                                placeholderTextColor="#4A5568"
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                            />
                         </View>
-                    )}
-                />
+
+                        <View style={styles.presetsContainer}>
+                            <Text style={styles.presetsTitle}>Quick Presets:</Text>
+                            <TouchableOpacity
+                                style={styles.presetButton}
+                                onPress={() => handleConnect(`http://${detectedIp}:3000`)}
+                            >
+                                <Text style={styles.presetButtonText}>Local IP: http://{detectedIp}:3000</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={styles.presetButton}
+                                onPress={() => handleConnect('http://localhost:3000')}
+                            >
+                                <Text style={styles.presetButtonText}>Localhost: http://localhost:3000</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <TouchableOpacity style={styles.connectButton} onPress={() => handleConnect()}>
+                            <Text style={styles.connectButtonText}>Connect & Retry</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView>
+            ) : (
+                <View style={styles.webviewContainer}>
+                    <WebView
+                        key={reloadKey}
+                        source={{ uri: targetUrl }}
+                        style={styles.webview}
+                        javaScriptEnabled={true}
+                        domStorageEnabled={true}
+                        startInLoadingState={true}
+                        scalesPageToFit={true}
+                        allowsInlineMediaPlayback={true}
+                        mediaPlaybackRequiresUserAction={false}
+                        onLoadStart={() => setIsLoading(true)}
+                        onLoadEnd={() => setIsLoading(false)}
+                        onError={(syntheticEvent) => {
+                            const { nativeEvent } = syntheticEvent;
+                            setHasError(true);
+                            setIsLoading(false);
+                            setErrorMessage(`Failed to load URL: ${nativeEvent.description || targetUrl}`);
+                        }}
+                        onHttpError={(syntheticEvent) => {
+                            const { nativeEvent } = syntheticEvent;
+                            setHasError(true);
+                            setIsLoading(false);
+                            setErrorMessage(`HTTP Error ${nativeEvent.statusCode} from ${targetUrl}`);
+                        }}
+                        renderLoading={() => (
+                            <View style={styles.loadingContainer}>
+                                <ActivityIndicator size="large" color="#00F0FF" />
+                                <Text style={styles.loadingText}>Loading GoNex App...</Text>
+                                <Text style={styles.loadingSubtext}>{targetUrl}</Text>
+                            </View>
+                        )}
+                    />
+                </View>
             )}
-        </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        backgroundColor: '#040814',
+    },
+    webviewContainer: {
         flex: 1,
         backgroundColor: '#040814',
     },
@@ -77,49 +174,114 @@ const styles = StyleSheet.create({
         backgroundColor: '#040814',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 24,
     },
     loadingText: {
         color: '#00F0FF',
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: 'bold',
+        marginTop: 16,
     },
-    errorContainer: {
-        flex: 1,
-        backgroundColor: '#040814',
-        alignItems: 'center',
+    loadingSubtext: {
+        color: '#64748B',
+        fontSize: 12,
+        marginTop: 8,
+        textAlign: 'center',
+    },
+    errorScrollContainer: {
+        flexGrow: 1,
         justifyContent: 'center',
+        padding: 20,
+        backgroundColor: '#040814',
+    },
+    errorCard: {
+        backgroundColor: '#0B132B',
+        borderRadius: 20,
         padding: 24,
+        borderWidth: 1,
+        borderColor: '#00F0FF33',
+        alignItems: 'stretch',
+    },
+    errorBadge: {
+        color: '#FFB800',
+        fontSize: 11,
+        fontWeight: '900',
+        letterSpacing: 1.5,
+        textAlign: 'center',
+        marginBottom: 8,
     },
     errorTitle: {
         color: '#FF4D4D',
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 'bold',
+        textAlign: 'center',
         marginBottom: 12,
-        textAlign: 'center',
-    },
-    errorSubtext: {
-        color: '#00F0FF',
-        fontSize: 14,
-        marginBottom: 8,
-        textAlign: 'center',
     },
     errorHint: {
-        color: '#8A99AD',
+        color: '#94A3B8',
         fontSize: 13,
         textAlign: 'center',
-        marginBottom: 24,
-        lineHeight: 18,
+        lineHeight: 20,
+        marginBottom: 20,
     },
-    retryButton: {
-        backgroundColor: '#0129D1',
-        paddingHorizontal: 24,
+    inputSection: {
+        marginBottom: 16,
+    },
+    inputLabel: {
+        color: '#00F0FF',
+        fontSize: 12,
+        fontWeight: '600',
+        marginBottom: 8,
+    },
+    input: {
+        backgroundColor: '#1C2541',
+        borderRadius: 12,
+        paddingHorizontal: 14,
         paddingVertical: 12,
-        borderRadius: 8,
+        color: '#FFFFFF',
+        fontSize: 14,
+        borderWidth: 1,
+        borderColor: '#3A506B',
     },
-    retryButtonText: {
+    presetsContainer: {
+        marginBottom: 20,
+    },
+    presetsTitle: {
+        color: '#64748B',
+        fontSize: 12,
+        fontWeight: '600',
+        marginBottom: 8,
+    },
+    presetButton: {
+        backgroundColor: '#1C254188',
+        borderRadius: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 12,
+        marginBottom: 8,
+        borderWidth: 1,
+        borderColor: '#00F0FF22',
+    },
+    presetButtonText: {
+        color: '#00F0FF',
+        fontSize: 13,
+        fontWeight: '500',
+    },
+    connectButton: {
+        backgroundColor: '#0221bf',
+        borderRadius: 14,
+        paddingVertical: 14,
+        alignItems: 'center',
+        shadowColor: '#00F0FF',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
+        elevation: 6,
+    },
+    connectButtonText: {
         color: '#FFFFFF',
         fontWeight: 'bold',
-        fontSize: 15,
+        fontSize: 16,
     },
 });
+
 

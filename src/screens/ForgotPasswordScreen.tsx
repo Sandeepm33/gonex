@@ -24,7 +24,7 @@ export const ForgotPasswordScreen: React.FC = () => {
             {!sent ? (
                 <form onSubmit={handleSubmit} className="my-auto space-y-4 max-w-sm mx-auto w-full">
                     <div className="text-center mb-6">
-                        <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-[#0129d1] to-cyan-400 text-white flex items-center justify-center text-3xl mx-auto mb-3 shadow-[0_0_25px_#00f0ff]">
+                        <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-[#073da8] to-cyan-400 text-white flex items-center justify-center text-3xl mx-auto mb-3 shadow-[0_0_25px_#00f0ff]">
                             🔑
                         </div>
                         <h2 className="text-lg font-black text-white flex items-center justify-center gap-1.5">
@@ -54,7 +54,7 @@ export const ForgotPasswordScreen: React.FC = () => {
 
                     <button
                         type="submit"
-                        className="w-full py-4 bg-gradient-to-r from-[#0129d1] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all border border-cyan-300/30 active:scale-98 mt-4"
+                        className="w-full py-4 bg-gradient-to-r from-[#073da8] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all border border-cyan-300/30 active:scale-98 mt-4"
                     >
                         Send Recovery Link
                     </button>

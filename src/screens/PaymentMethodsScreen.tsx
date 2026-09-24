@@ -44,7 +44,7 @@ export const PaymentMethodsScreen: React.FC = () => {
                                 </div>
 
                                 {isSelected && (
-                                    <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[#0129d1] to-cyan-400 text-white flex items-center justify-center shadow-[0_0_10px_#00f0ff]">
+                                    <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[#073da8] to-cyan-400 text-white flex items-center justify-center shadow-[0_0_10px_#00f0ff]">
                                         <Check className="w-3.5 h-3.5" />
                                     </div>
                                 )}

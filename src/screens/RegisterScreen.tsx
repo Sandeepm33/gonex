@@ -219,7 +219,7 @@ export const RegisterScreen: React.FC = () => {
                 <button
                     type="submit"
                     disabled={!agreed}
-                    className="w-full py-4 bg-gradient-to-r from-[#0129d1] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 disabled:opacity-50 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all border border-cyan-300/30 active:scale-98 mt-2"
+                    className="w-full py-4 bg-gradient-to-r from-[#0221bf] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 disabled:opacity-50 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all border border-cyan-300/30 active:scale-98 mt-2"
                 >
                     Create Account & Save Card
                 </button>
@@ -243,7 +243,7 @@ export const OTPVerificationScreen: React.FC = () => {
             </div>
 
             <div className="text-center my-auto space-y-6">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#0129d1] to-cyan-400 text-white flex items-center justify-center text-3xl mx-auto shadow-[0_0_30px_#00f0ff] ring-4 ring-cyan-300/30">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#0221bf] to-cyan-400 text-white flex items-center justify-center text-3xl mx-auto shadow-[0_0_30px_#00f0ff] ring-4 ring-cyan-300/30">
                     📱
                 </div>
 
@@ -279,7 +279,7 @@ export const OTPVerificationScreen: React.FC = () => {
 
             <button
                 onClick={() => navigate('home')}
-                className="w-full py-4 bg-gradient-to-r from-[#0129d1] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all border border-cyan-300/30 active:scale-98 mb-4"
+                className="w-full py-4 bg-gradient-to-r from-[#0221bf] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all border border-cyan-300/30 active:scale-98 mb-4"
             >
                 Verify Code & Launch App
             </button>

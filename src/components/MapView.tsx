@@ -54,7 +54,7 @@ export const MapView: React.FC<MapViewProps> = ({
                     <defs>
                         <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" stopColor="#00f0ff" />
-                            <stop offset="50%" stopColor="#0129d1" />
+                            <stop offset="50%" stopColor="#073da8" />
                             <stop offset="100%" stopColor="#7928CA" />
                         </linearGradient>
                         <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
@@ -101,7 +101,7 @@ export const MapView: React.FC<MapViewProps> = ({
             <div className="absolute top-[80px] left-[280px] z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group">
                 <div className="relative flex items-center justify-center">
                     <span className="absolute w-12 h-12 rounded-full bg-cyan-400/30 animate-ping" />
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#0129d1] to-cyan-400 ring-4 ring-cyan-400/60 text-white flex items-center justify-center shadow-[0_0_25px_#00f0ff]">
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#073da8] to-cyan-400 ring-4 ring-cyan-400/60 text-white flex items-center justify-center shadow-[0_0_25px_#00f0ff]">
                         <MapPin className="w-4 h-4 fill-current" />
                     </div>
                 </div>
@@ -138,7 +138,7 @@ export const MapView: React.FC<MapViewProps> = ({
                 >
                     <div className="relative flex items-center justify-center">
                         <span className="absolute w-16 h-16 rounded-full bg-cyan-400/30 animate-radar-pulse" />
-                        <div className="p-3 rounded-2xl bg-gradient-to-br from-[#0129d1] to-cyan-500 ring-4 ring-cyan-300/50 text-white text-xl shadow-[0_0_30px_#00f0ff]">
+                        <div className="p-3 rounded-2xl bg-gradient-to-br from-[#073da8] to-cyan-500 ring-4 ring-cyan-300/50 text-white text-xl shadow-[0_0_30px_#00f0ff]">
                             🚘
                         </div>
                     </div>
@@ -151,7 +151,7 @@ export const MapView: React.FC<MapViewProps> = ({
                     <div className="relative w-80 h-80 rounded-full border border-cyan-500/30 flex items-center justify-center">
                         <div className="absolute inset-0 rounded-full border border-cyan-400/40 animate-radar-pulse" />
                         <div className="absolute w-full h-full rounded-full border-t-2 border-cyan-400 animate-radar-spin shadow-[0_0_20px_#00f0ff]" />
-                        <div className="w-6 h-6 rounded-full bg-[#0129d1] shadow-[0_0_25px_#00f0ff] flex items-center justify-center text-white text-xs font-black">
+                        <div className="w-6 h-6 rounded-full bg-[#073da8] shadow-[0_0_25px_#00f0ff] flex items-center justify-center text-white text-xs font-black">
                             G
                         </div>
                     </div>

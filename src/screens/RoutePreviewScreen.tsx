@@ -40,14 +40,14 @@ export const RoutePreviewScreen: React.FC = () => {
                         <span className="truncate">{pickup}</span>
                     </div>
                     <div className="flex items-center gap-2.5">
-                        <span className="w-3 h-3 rounded-full bg-[#0129d1] ring-2 ring-cyan-400 shadow-md shadow-cyan-500/50" />
+                        <span className="w-3 h-3 rounded-full bg-[#0221bf] ring-2 ring-cyan-400 shadow-md shadow-cyan-500/50" />
                         <span className="truncate">{destination}</span>
                     </div>
                 </div>
 
                 <button
                     onClick={() => navigate('ride-selection')}
-                    className="w-full py-4 bg-gradient-to-r from-[#0129d1] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2 transition-all active:scale-98 border border-cyan-300/30"
+                    className="w-full py-4 bg-gradient-to-r from-[#0221bf] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2 transition-all active:scale-98 border border-cyan-300/30"
                 >
                     <span>Choose Vehicle Category</span>
                     <ChevronRight className="w-5 h-5" />
@@ -105,7 +105,7 @@ export const RideSelectionScreen: React.FC = () => {
                 <div className="pt-5">
                     <button
                         onClick={() => navigate('confirm-ride')}
-                        className="w-full py-4 bg-gradient-to-r from-[#0129d1] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2 transition-all active:scale-98 border border-cyan-300/30"
+                        className="w-full py-4 bg-gradient-to-r from-[#0221bf] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2 transition-all active:scale-98 border border-cyan-300/30"
                     >
                         <span>Confirm {selectedRide.name}</span>
                         <ChevronRight className="w-5 h-5" />

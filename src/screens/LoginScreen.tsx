@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Eye, EyeOff, Lock, Mail, ArrowRight, Sparkles } from 'lucide-react';
 import { useRide } from '../context/RideContext';
 import { useAuth } from '../context/AuthContext';
+import gonexLogo from '../assets/gonexlogo.avif';
 
 export const LoginScreen: React.FC = () => {
     const { navigate } = useRide();
@@ -27,13 +28,13 @@ export const LoginScreen: React.FC = () => {
 
             {/* Brand Header */}
             <div className="flex flex-col items-center pt-6 text-center">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#0129d1] to-cyan-400 text-white flex items-center justify-center font-black text-3xl shadow-[0_0_30px_#00f0ff] mb-3 ring-2 ring-cyan-300/40">
-                    G
+                <div className="w-20 h-20 rounded-3xl bg-[#030A1C] border-2 border-cyan-400/50 p-2 flex items-center justify-center shadow-[0_0_35px_rgba(2,33,191,0.6)] mb-3 ring-2 ring-cyan-300/30 overflow-hidden">
+                    <img src={gonexLogo} alt="GoNex Logo" className="w-full h-full object-contain" />
                 </div>
-                <h1 className="text-3xl font-black tracking-wider text-white flex items-center gap-1.5">
+                <h1 className="text-3xl font-black tracking-wider text-white flex items-center gap-1.5 uppercase">
                     GoNex <Sparkles className="w-5 h-5 text-cyan-400" />
                 </h1>
-                <p className="text-xs text-cyan-200/80 mt-1 font-semibold">Welcome back to the Future of Ride-Booking</p>
+                <p className="text-xs text-cyan-200/80 mt-1 font-semibold">Technology for Next-Gen Mobility</p>
             </div>
 
             {/* Login Form */}
@@ -97,7 +98,7 @@ export const LoginScreen: React.FC = () => {
 
                 <button
                     type="submit"
-                    className="w-full py-4 bg-gradient-to-r from-[#0129d1] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 active:scale-[0.99] text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all flex items-center justify-center gap-2 border border-cyan-300/30"
+                    className="w-full py-4 bg-gradient-to-r from-[#0221bf] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 active:scale-[0.99] text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all flex items-center justify-center gap-2 border border-cyan-300/30"
                 >
                     <span>LOG IN TO SYSTEM</span>
                     <ArrowRight className="w-5 h-5" />

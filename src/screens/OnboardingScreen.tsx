@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
 import { useRide } from '../context/RideContext';
+import gonexLogo from '../assets/gonexlogo.avif';
 
 export const OnboardingScreen: React.FC = () => {
     const { navigate } = useRide();
@@ -11,7 +12,7 @@ export const OnboardingScreen: React.FC = () => {
             title: "Future of Urban Mobility",
             subtitle: "Experience high-speed, instant ride dispatches with transparent pricing and cyber live tracking.",
             icon: "🏎️",
-            bgGradient: "from-[#0129d1] to-cyan-500/30",
+            bgGradient: "from-[#0221bf] to-cyan-500/30",
         },
         {
             title: "Choose Your Fleet",
@@ -43,8 +44,8 @@ export const OnboardingScreen: React.FC = () => {
             {/* Top Bar with Skip */}
             <div className="flex items-center justify-between pt-2">
                 <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#0129d1] to-cyan-400 text-white flex items-center justify-center font-black text-sm shadow-[0_0_15px_#00f0ff]">
-                        G
+                    <div className="w-8 h-8 rounded-xl bg-[#030A1C] border border-cyan-400/40 p-1 flex items-center justify-center shadow-[0_0_15px_rgba(2,33,191,0.5)]">
+                        <img src={gonexLogo} alt="GoNex" className="w-full h-full object-contain" />
                     </div>
                     <span className="font-black text-base text-white tracking-wider flex items-center gap-1">
                         GoNex <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
@@ -88,7 +89,7 @@ export const OnboardingScreen: React.FC = () => {
             <div className="pb-4">
                 <button
                     onClick={handleNext}
-                    className="w-full py-4 bg-gradient-to-r from-[#0129d1] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 active:scale-[0.99] text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2 transition-all border border-cyan-300/30"
+                    className="w-full py-4 bg-gradient-to-r from-[#0221bf] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 active:scale-[0.99] text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2 transition-all border border-cyan-300/30"
                 >
                     <span>{currentSlide === slides.length - 1 ? 'Get Started' : 'Next'}</span>
                     {currentSlide === slides.length - 1 ? <ArrowRight className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}

@@ -31,12 +31,12 @@ export const HomeScreen: React.FC = () => {
                     className="p-4 rounded-3xl bg-slate-950/80 border border-cyan-400/40 hover:border-cyan-400 cursor-pointer transition-all duration-300 shadow-[0_0_25px_rgba(0,240,255,0.2)] flex items-center justify-between group active:scale-[0.99]"
                 >
                     <div className="flex items-center gap-3.5">
-                        <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#0129d1] to-cyan-400 text-white flex items-center justify-center shadow-[0_0_20px_#00f0ff] group-hover:scale-110 transition-transform">
+                        <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#073da8] to-cyan-400 text-white flex items-center justify-center shadow-[0_0_20px_#00f0ff] group-hover:scale-110 transition-transform">
                             <Search className="w-5 h-5" />
                         </div>
                         <div>
                             <span className="text-[10px] font-black uppercase text-cyan-400 tracking-widest flex items-center gap-1">
-                                <Zap className="w-3 h-3 text-amber-400 fill-current animate-pulse" />
+                               
                                 WHERE WOULD YOU LIKE TO GO?
                             </span>
                             <h2 className="text-sm font-extrabold text-white">

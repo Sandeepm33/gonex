@@ -21,7 +21,7 @@ export const DriverCard: React.FC<DriverCardProps> = ({
             {/* Top Driver Status Header */}
             <div className="flex items-center justify-between pb-2.5 border-b border-gray-200 dark:border-cyan-500/20">
                 <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-[#0129d1] dark:text-cyan-400 flex items-center gap-1.5">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#073da8] dark:text-cyan-400 flex items-center gap-1.5">
                         <Zap className="w-3 h-3 text-cyan-400 animate-pulse" /> YOUR DRIVER IS EN ROUTE
                     </span>
                     <h2 className="text-lg font-black text-gray-900 dark:text-white flex items-center gap-2">
@@ -76,7 +76,7 @@ export const DriverCard: React.FC<DriverCardProps> = ({
 
                     <button
                         onClick={onMessage}
-                        className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#0129d1] to-cyan-500 text-white flex items-center justify-center shadow-lg shadow-cyan-500/30 transition-all hover:scale-105 active:scale-95 border border-cyan-300/40"
+                        className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#073da8] to-cyan-500 text-white flex items-center justify-center shadow-lg shadow-cyan-500/30 transition-all hover:scale-105 active:scale-95 border border-cyan-300/40"
                     >
                         <MessageSquare className="w-5 h-5" />
                     </button>

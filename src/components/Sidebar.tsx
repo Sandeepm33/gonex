@@ -20,6 +20,7 @@ import {
 import { useRide, ScreenType } from '../context/RideContext';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
+import gonexLogo from '../assets/gonexlogo.avif';
 
 export const Sidebar: React.FC = () => {
     const { sidebarOpen, setSidebarOpen, navigate, currentScreen } = useRide();
@@ -50,22 +51,27 @@ export const Sidebar: React.FC = () => {
             />
 
             {/* Drawer Container */}
-            <aside className="relative w-4/5 max-w-xs bg-white dark:bg-[#081226] h-full shadow-2xl flex flex-col justify-between z-10 overflow-y-auto border-r border-gray-200 dark:border-cyan-500/20">
+            <aside className="relative w-4/5 max-w-xs bg-white dark:bg-[#051336] h-full shadow-2xl flex flex-col justify-between z-10 overflow-y-auto border-r border-gray-200 dark:border-[#0221bf]/40 text-slate-900 dark:text-white">
 
                 {/* Top Header & User Profile Banner */}
-                <div className="p-5 bg-gradient-to-br from-[#0129d1] via-blue-700 to-[#040814] text-white relative overflow-hidden">
+                <div className="p-5 bg-gradient-to-br from-[#0221bf] via-blue-700 to-[#011580] text-white relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-400/10 rounded-full blur-2xl pointer-events-none" />
 
                     <div className="flex items-center justify-between mb-4 relative z-10">
-                        <div className="flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
-                            <span className="font-black text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-400 uppercase">
-                                GoNex
-                            </span>
+                        <div className="flex items-center gap-2.5">
+                            <div className="w-10 h-10 p-1 bg-[#030A1C] border border-cyan-400/40 rounded-2xl flex items-center justify-center shadow-lg shadow-[#0221bf]/50">
+                                <img src={gonexLogo} alt="GoNex Logo" className="w-full h-full object-contain" />
+                            </div>
+                            <div>
+                                <span className="font-black text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-400 uppercase block leading-none">
+                                    GoNex
+                                </span>
+                                <span className="text-[9px] font-black text-cyan-300 uppercase tracking-widest">Mobility Suite</span>
+                            </div>
                         </div>
                         <button
                             onClick={() => setSidebarOpen(false)}
-                            className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors active:scale-95"
+                            className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors active:scale-95 border border-white/10"
                         >
                             <X className="w-4 h-4" />
                         </button>
@@ -77,9 +83,9 @@ export const Sidebar: React.FC = () => {
                             setSidebarOpen(false);
                             navigate('profile');
                         }}
-                        className="flex items-center gap-3.5 cursor-pointer group relative z-10 p-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 hover:border-cyan-400/40 transition-all"
+                        className="flex items-center gap-3.5 cursor-pointer group relative z-10 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 hover:border-cyan-400/40 transition-all shadow-md"
                     >
-                        <div className="relative w-12 h-12 rounded-2xl overflow-hidden ring-2 ring-cyan-400/50 shadow-lg">
+                        <div className="relative w-11 h-11 rounded-2xl overflow-hidden ring-2 ring-cyan-400/60 shadow-lg">
                             <img
                                 src={user.avatar}
                                 alt={`${user.firstName} ${user.lastName}`}
@@ -87,28 +93,28 @@ export const Sidebar: React.FC = () => {
                             />
                         </div>
                         <div className="overflow-hidden">
-                            <h3 className="font-extrabold text-sm text-white truncate group-hover:text-cyan-300 transition-colors">
+                            <h3 className="font-black text-sm text-white truncate group-hover:text-cyan-300 transition-colors">
                                 {user.firstName} {user.lastName}
                             </h3>
-                            <p className="text-[11px] text-cyan-200/80 truncate">{user.email}</p>
+                            <p className="text-[11px] text-cyan-200/90 font-medium truncate">{user.email}</p>
                         </div>
                     </div>
 
                     {/* User Stats Quick Bar */}
-                    <div className="mt-3 grid grid-cols-2 gap-2 text-xs font-semibold relative z-10">
-                        <div className="flex items-center gap-1.5 p-2 rounded-xl bg-black/20 border border-white/5">
+                    <div className="mt-3 grid grid-cols-2 gap-2 text-xs font-bold relative z-10">
+                        <div className="flex items-center gap-1.5 p-2 rounded-xl bg-black/25 border border-white/10">
                             <Award className="w-3.5 h-3.5 text-amber-400" />
-                            <span className="text-[11px]">480 Pts</span>
+                            <span className="text-[11px] text-white">480 Pts</span>
                         </div>
-                        <div className="flex items-center gap-1.5 p-2 rounded-xl bg-black/20 border border-white/5">
+                        <div className="flex items-center gap-1.5 p-2 rounded-xl bg-black/25 border border-white/10">
                             <Leaf className="w-3.5 h-3.5 text-emerald-400" />
-                            <span className="text-[11px]">14kg CO₂ saved</span>
+                            <span className="text-[11px] text-white">14kg CO₂</span>
                         </div>
                     </div>
                 </div>
 
                 {/* Navigation Items List */}
-                <div className="px-3 py-3 flex-1 space-y-1 overflow-y-auto">
+                <div className="px-3 py-3 flex-1 space-y-1.5 overflow-y-auto">
                     {navItems.map((item) => {
                         const isActive = currentScreen === item.screen;
                         return (
@@ -118,39 +124,42 @@ export const Sidebar: React.FC = () => {
                                     setSidebarOpen(false);
                                     navigate(item.screen);
                                 }}
-                                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 ${isActive
-                                    ? 'bg-gradient-to-r from-[#0129d1] to-blue-600 text-white shadow-lg shadow-blue-600/30 ring-1 ring-cyan-400/30'
-                                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800/60'
+                                className={`w-full flex items-center justify-between px-3.5 py-3 rounded-2xl text-xs font-extrabold transition-all duration-200 ${isActive
+                                    ? 'bg-gradient-to-r from-[#0221bf] to-blue-600 text-white shadow-lg shadow-[#0221bf]/30 border border-cyan-400/40'
+                                    : 'text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-[#081D4F]/80 border border-transparent'
                                     }`}
                             >
                                 <div className="flex items-center gap-3">
-                                    <span className={isActive ? 'text-cyan-300' : 'text-[#0129d1] dark:text-cyan-400'}>
+                                    <div className={`p-2 rounded-xl flex items-center justify-center transition-colors ${isActive
+                                        ? 'bg-white/20 text-white shadow-inner'
+                                        : 'bg-slate-100 dark:bg-slate-800/80 text-[#0221bf] dark:text-cyan-400 border border-slate-200 dark:border-cyan-500/20'
+                                        }`}>
                                         {item.icon}
-                                    </span>
-                                    <span>{item.label}</span>
+                                    </div>
+                                    <span className="font-extrabold">{item.label}</span>
                                 </div>
-                                <ChevronRight className={`w-3.5 h-3.5 opacity-40 ${isActive ? 'text-white' : ''}`} />
+                                <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? 'text-white opacity-100 translate-x-0.5' : 'text-slate-400 dark:text-slate-500 opacity-60'}`} />
                             </button>
                         );
                     })}
                 </div>
 
                 {/* Bottom Preferences & Logout */}
-                <div className="p-3 border-t border-gray-100 dark:border-cyan-500/10 space-y-2 bg-gray-50/50 dark:bg-[#040814]/60">
+                <div className="p-3 border-t border-slate-200 dark:border-cyan-500/20 space-y-2 bg-slate-50 dark:bg-[#030A1C]">
 
                     {/* Theme Switcher Toggle */}
-                    <div className="flex items-center justify-between px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-cyan-500/20">
-                        <div className="flex items-center gap-2.5 text-xs font-bold text-gray-700 dark:text-gray-200">
+                    <div className="flex items-center justify-between px-3.5 py-2.5 rounded-2xl bg-white dark:bg-[#051336] border border-slate-200 dark:border-cyan-500/30 shadow-sm">
+                        <div className="flex items-center gap-2.5 text-xs font-extrabold text-slate-900 dark:text-slate-100">
                             {isDark ? <Moon className="w-4 h-4 text-cyan-400" /> : <Sun className="w-4 h-4 text-amber-500" />}
-                            <span>{isDark ? 'Cyber Dark' : 'Light Mode'}</span>
+                            <span>{isDark ? 'Cyber Dark' : 'Light Theme'}</span>
                         </div>
                         <button
                             onClick={toggleTheme}
-                            className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${isDark ? 'bg-cyan-500' : 'bg-gray-300'
+                            className={`relative inline-flex h-5 w-10 items-center rounded-full transition-colors border border-slate-300 dark:border-cyan-500/40 ${isDark ? 'bg-[#0221bf]' : 'bg-slate-300'
                                 }`}
                         >
                             <span
-                                className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${isDark ? 'translate-x-4' : 'translate-x-1'
+                                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform shadow-md ${isDark ? 'translate-x-5' : 'translate-x-0.5'
                                     }`}
                             />
                         </button>
@@ -163,7 +172,7 @@ export const Sidebar: React.FC = () => {
                             logout();
                             navigate('login');
                         }}
-                        className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-bold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
+                        className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs font-extrabold text-red-600 dark:text-red-400 bg-red-50/80 dark:bg-red-950/40 border border-red-200 dark:border-red-500/30 hover:bg-red-100 dark:hover:bg-red-900/50 transition-colors"
                     >
                         <LogOut className="w-4 h-4" />
                         <span>Sign Out</span>

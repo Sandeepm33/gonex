@@ -66,7 +66,7 @@ export const SearchingDriverScreen: React.FC = () => {
 
                     <button
                         onClick={() => navigate('active-ride')}
-                        className="w-2/3 py-3.5 bg-gradient-to-r from-[#0129d1] to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-cyan-500/30 transition-all border border-cyan-300/30 active:scale-98"
+                        className="w-2/3 py-3.5 bg-gradient-to-r from-[#0221bf] to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-cyan-500/30 transition-all border border-cyan-300/30 active:scale-98"
                     >
                         Skip Simulation ➔
                     </button>

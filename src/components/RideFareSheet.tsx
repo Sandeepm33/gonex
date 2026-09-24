@@ -90,7 +90,7 @@ export const RideFareSheet: React.FC<RideFareSheetProps> = ({
                         <span className="font-bold">${ride.minimumFare.toFixed(2)}</span>
                     </div>
 
-                    <div className="flex justify-between pt-2 border-t border-gray-200 dark:border-dark-border text-sm font-extrabold text-[#0129d1] dark:text-white">
+                    <div className="flex justify-between pt-2 border-t border-gray-200 dark:border-dark-border text-sm font-extrabold text-[#073da8] dark:text-white">
                         <span>Estimated Total Fare</span>
                         <span className="text-xl font-black">${fare.finalFare.toFixed(2)}</span>
                     </div>
@@ -103,7 +103,7 @@ export const RideFareSheet: React.FC<RideFareSheetProps> = ({
                         onConfirm(ride.id);
                         onClose();
                     }}
-                    className="w-full py-4 bg-[#0129d1] hover:bg-[#0020a8] text-white font-bold text-base rounded-2xl shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-[#073da8] hover:bg-[#0020a8] text-white font-bold text-base rounded-2xl shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2"
                 >
                     <Check className="w-5 h-5" />
                     <span>Confirm {ride.name} Ride</span>

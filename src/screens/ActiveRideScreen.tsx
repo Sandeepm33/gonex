@@ -43,7 +43,7 @@ export const ActiveRideScreen: React.FC = () => {
                 <div className="flex items-center justify-between p-3.5 rounded-xl bg-gray-50 dark:bg-dark-surface border border-gray-100 dark:border-dark-border text-xs font-bold">
                     <div>
                         <span className="text-gray-400 block uppercase text-[10px]">Total Price</span>
-                        <span className="text-lg font-black text-[#0129d1] dark:text-white">
+                        <span className="text-lg font-black text-[#073da8] dark:text-white">
                             ${fare.finalFare.toFixed(2)}
                         </span>
                     </div>

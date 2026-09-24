@@ -29,7 +29,7 @@ export const RideCard: React.FC<RideCardProps> = ({
         >
             {/* Top Glowing Badge Strip */}
             {ride.id === 'standard-x' && (
-                <div className="w-full bg-gradient-to-r from-[#0129d1] via-blue-600 to-cyan-500 py-1 px-4 flex items-center justify-between">
+                <div className="w-full bg-gradient-to-r from-[#073da8] via-blue-600 to-cyan-500 py-1 px-4 flex items-center justify-between">
                     <span className="text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
                         <Sparkles className="w-3 h-3 text-cyan-300" /> Most Popular
                     </span>
@@ -57,7 +57,7 @@ export const RideCard: React.FC<RideCardProps> = ({
             <div className="flex items-center justify-between p-4 gap-3">
                 {/* Left: Vehicle Icon & Details */}
                 <div className="flex items-center gap-3.5 min-w-0">
-                    <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center text-3xl transition-transform duration-300 ${isSelected ? 'bg-gradient-to-tr from-[#0129d1] to-cyan-500/30 ring-2 ring-cyan-400/50 scale-105' : 'bg-gray-100 dark:bg-slate-900 border border-white/10'}`}>
+                    <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center text-3xl transition-transform duration-300 ${isSelected ? 'bg-gradient-to-tr from-[#073da8] to-cyan-500/30 ring-2 ring-cyan-400/50 scale-105' : 'bg-gray-100 dark:bg-slate-900 border border-white/10'}`}>
                         {ride.image}
                     </div>
 
@@ -89,7 +89,7 @@ export const RideCard: React.FC<RideCardProps> = ({
                             e.stopPropagation();
                             setDetailsOpen((prev) => !prev);
                         }}
-                        className="px-2.5 py-1 rounded-xl bg-gray-100 dark:bg-slate-800/80 hover:bg-[#0129d1] text-gray-700 dark:text-cyan-300 hover:text-white border border-gray-200 dark:border-cyan-500/30 text-[10px] font-bold flex items-center gap-1 transition-all ml-auto active:scale-95"
+                        className="px-2.5 py-1 rounded-xl bg-gray-100 dark:bg-slate-800/80 hover:bg-[#073da8] text-gray-700 dark:text-cyan-300 hover:text-white border border-gray-200 dark:border-cyan-500/30 text-[10px] font-bold flex items-center gap-1 transition-all ml-auto active:scale-95"
                     >
                         <Info className="w-3 h-3" />
                         <span>{detailsOpen ? 'Hide' : 'Fare Details'}</span>
@@ -104,7 +104,7 @@ export const RideCard: React.FC<RideCardProps> = ({
                     onClick={(e) => e.stopPropagation()}
                     className="mx-3.5 mb-3.5 p-3.5 rounded-2xl bg-gray-50 dark:bg-slate-950/80 border border-gray-200 dark:border-cyan-500/20 space-y-2 text-xs font-semibold animate-fadeIn"
                 >
-                    <div className="text-[10px] font-black uppercase tracking-widest text-[#0129d1] dark:text-cyan-400 mb-1 flex items-center gap-1">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-[#073da8] dark:text-cyan-400 mb-1 flex items-center gap-1">
                         <Sparkles className="w-3 h-3" /> Transparent Pricing
                     </div>
 
@@ -123,7 +123,7 @@ export const RideCard: React.FC<RideCardProps> = ({
                         <span className="text-gray-900 dark:text-white font-bold">${fare.waitingFare.toFixed(2)}</span>
                     </div>
 
-                    <div className="flex justify-between pt-2 border-t border-gray-200 dark:border-cyan-500/20 text-xs font-extrabold text-[#0129d1] dark:text-cyan-400">
+                    <div className="flex justify-between pt-2 border-t border-gray-200 dark:border-cyan-500/20 text-xs font-extrabold text-[#073da8] dark:text-cyan-400">
                         <span>Estimated Total</span>
                         <span className="text-base text-gray-900 dark:text-white font-black">${fare.finalFare.toFixed(2)}</span>
                     </div>

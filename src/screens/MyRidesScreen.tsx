@@ -18,7 +18,7 @@ export const MyRidesScreen: React.FC = () => {
                 <button
                     onClick={() => setTab('upcoming')}
                     className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all ${tab === 'upcoming'
-                        ? 'bg-gradient-to-r from-[#0129d1] to-cyan-500 text-white shadow-lg shadow-cyan-500/30'
+                        ? 'bg-gradient-to-r from-[#073da8] to-cyan-500 text-white shadow-lg shadow-cyan-500/30'
                         : 'text-gray-400 hover:text-white'
                         }`}
                 >
@@ -27,7 +27,7 @@ export const MyRidesScreen: React.FC = () => {
                 <button
                     onClick={() => setTab('history')}
                     className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all ${tab === 'history'
-                        ? 'bg-gradient-to-r from-[#0129d1] to-cyan-500 text-white shadow-lg shadow-cyan-500/30'
+                        ? 'bg-gradient-to-r from-[#073da8] to-cyan-500 text-white shadow-lg shadow-cyan-500/30'
                         : 'text-gray-400 hover:text-white'
                         }`}
                 >
@@ -48,7 +48,7 @@ export const MyRidesScreen: React.FC = () => {
                         </p>
                         <button
                             onClick={() => navigate('home')}
-                            className="mt-3 px-6 py-3 bg-gradient-to-r from-[#0129d1] to-cyan-500 text-white text-xs font-extrabold rounded-xl shadow-lg shadow-cyan-500/30 border border-cyan-300/30 active:scale-95"
+                            className="mt-3 px-6 py-3 bg-gradient-to-r from-[#073da8] to-cyan-500 text-white text-xs font-extrabold rounded-xl shadow-lg shadow-cyan-500/30 border border-cyan-300/30 active:scale-95"
                         >
                             Book a Ride Now
                         </button>

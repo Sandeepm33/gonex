@@ -40,7 +40,7 @@ export const ProfileScreen: React.FC = () => {
                         />
                         <button
                             type="button"
-                            className="absolute -bottom-1 -right-1 p-2 rounded-2xl bg-gradient-to-tr from-[#0129d1] to-cyan-400 text-white shadow-lg border border-cyan-300/40 hover:scale-110 transition-transform active:scale-95"
+                            className="absolute -bottom-1 -right-1 p-2 rounded-2xl bg-gradient-to-tr from-[#0221bf] to-cyan-400 text-white shadow-lg border border-cyan-300/40 hover:scale-110 transition-transform active:scale-95"
                         >
                             <Camera className="w-4 h-4" />
                         </button>
@@ -103,7 +103,7 @@ export const ProfileScreen: React.FC = () => {
 
                 <button
                     type="submit"
-                    className="w-full py-4 bg-gradient-to-r from-[#0129d1] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all border border-cyan-300/30 flex items-center justify-center gap-2 active:scale-98"
+                    className="w-full py-4 bg-gradient-to-r from-[#0221bf] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-cyan-500/30 transition-all border border-cyan-300/30 flex items-center justify-center gap-2 active:scale-98"
                 >
                     <Save className="w-5 h-5" />
                     <span>Save Profile Changes</span>
