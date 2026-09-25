@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, MapPin, Clock, ArrowRight, Compass, ShieldCheck, Zap, Sparkles, Calendar } from 'lucide-react';
+import { Search, MapPin, Clock, ArrowRight, Compass, ShieldCheck, Zap, Sparkles, Calendar, Home, Briefcase, Plane, Trees } from 'lucide-react';
 import { Header } from '../components/Header';
 import { MapView } from '../components/MapView';
 import { useRide } from '../context/RideContext';
@@ -7,6 +7,29 @@ import { MOCK_SAVED_PLACES } from '../constants/mockData';
 
 export const HomeScreen: React.FC = () => {
     const { pickup, setDestination, setBookingType, isMapMaximized, navigate } = useRide();
+
+    const renderPlaceIcon = (iconName: string) => {
+        const className = "w-4 h-4 text-[#0221bf] dark:text-cyan-400";
+        switch (iconName) {
+            case 'Home':
+            case '🏠':
+                return <Home className={className} />;
+            case 'Work':
+            case 'Briefcase':
+            case '💼':
+                return <Briefcase className={className} />;
+            case 'Airport':
+            case 'Plane':
+            case '✈️':
+                return <Plane className={className} />;
+            case 'Park':
+            case 'Trees':
+            case '🌳':
+                return <Trees className={className} />;
+            default:
+                return <MapPin className={className} />;
+        }
+    };
 
     return (
         <div className="relative flex flex-col h-full min-h-screen cyber-bg-dark text-white overflow-hidden select-none">
@@ -95,7 +118,7 @@ export const HomeScreen: React.FC = () => {
                     <div>
                         <div className="flex items-center justify-between mb-2">
                             <h3 className="text-[10px] font-black uppercase tracking-widest text-[#0221bf] dark:text-cyan-400 flex items-center gap-1">
-                                 Frequent Destinations
+                                Frequent Destinations
                             </h3>
                             <span className="text-[9px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider">Fast dispatch</span>
                         </div>
@@ -111,7 +134,9 @@ export const HomeScreen: React.FC = () => {
                                     className="flex items-center justify-between p-3 rounded-2xl bg-white/90 dark:bg-[#051336]/80 hover:bg-slate-100 dark:hover:bg-slate-800/90 border border-slate-200/80 dark:border-cyan-500/25 hover:border-[#0221bf] dark:hover:border-cyan-400 cursor-pointer transition-all shadow-sm group active:scale-[0.99]"
                                 >
                                     <div className="flex items-center gap-3">
-                                        <span className="text-xl p-2 rounded-xl bg-slate-100 dark:bg-[#030A1C] border border-slate-200/80 dark:border-cyan-500/30 shadow-sm">{place.icon}</span>
+                                        <div className="p-2 rounded-xl bg-blue-50 dark:bg-[#030A1C] border border-blue-200/80 dark:border-cyan-500/30 flex items-center justify-center shadow-sm">
+                                            {renderPlaceIcon(place.icon)}
+                                        </div>
                                         <div>
                                             <h4 className="text-xs font-black text-slate-900 dark:text-white group-hover:text-[#0221bf] dark:group-hover:text-cyan-300 transition-colors">{place.name}</h4>
                                             <p className="text-[10px] text-slate-500 dark:text-gray-300 font-semibold truncate max-w-[200px]">{place.address}</p>

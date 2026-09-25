@@ -61,10 +61,10 @@ export interface PaymentMethod {
 }
 
 export const MOCK_SAVED_PLACES: SavedPlace[] = [
-    { id: '1', name: 'Home', address: '742 Evergreen Terrace, Chicago', icon: '🏠' },
-    { id: '2', name: 'Work', address: '100 Willis Tower, Chicago Downtown', icon: '💼' },
-    { id: '3', name: 'Chicago O\'Hare Airport', address: '10000 W O\'Hare Ave, Chicago', icon: '✈️' },
-    { id: '4', name: 'Millennium Park', address: '201 E Randolph St, Chicago', icon: '🌳' },
+    { id: '1', name: 'Home', address: '742 Evergreen Terrace, Chicago', icon: 'Home' },
+    { id: '2', name: 'Work', address: '100 Willis Tower, Chicago Downtown', icon: 'Briefcase' },
+    { id: '3', name: 'Chicago O\'Hare Airport', address: '10000 W O\'Hare Ave, Chicago', icon: 'Plane' },
+    { id: '4', name: 'Millennium Park', address: '201 E Randolph St, Chicago', icon: 'Trees' },
 ];
 
 export const MOCK_DRIVER: Driver = {

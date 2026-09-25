@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, MapPin, Search, Navigation, Check, Clock, Sparkles } from 'lucide-react';
+import { ArrowLeft, MapPin, Search, Navigation, Check, Clock, Sparkles, Home, Briefcase, Plane, Trees } from 'lucide-react';
 import { useRide } from '../context/RideContext';
 import { MOCK_SAVED_PLACES } from '../constants/mockData';
 
@@ -10,6 +10,29 @@ export const LocationSearchScreen: React.FC = () => {
 
     const handleConfirm = () => {
         confirmLocations(pickupInput || '123 Main Street', destInput || 'Downtown Chicago');
+    };
+
+    const renderPlaceIcon = (iconName: string) => {
+        const className = "w-5 h-5 text-[#0221bf] dark:text-cyan-400";
+        switch (iconName) {
+            case 'Home':
+            case '🏠':
+                return <Home className={className} />;
+            case 'Work':
+            case 'Briefcase':
+            case '💼':
+                return <Briefcase className={className} />;
+            case 'Airport':
+            case 'Plane':
+            case '✈️':
+                return <Plane className={className} />;
+            case 'Park':
+            case 'Trees':
+            case '🌳':
+                return <Trees className={className} />;
+            default:
+                return <MapPin className={className} />;
+        }
     };
 
     return (
@@ -84,7 +107,9 @@ export const LocationSearchScreen: React.FC = () => {
                             className="flex items-center justify-between p-4 rounded-2xl glass-card hover:border-[#0221bf] dark:hover:border-cyan-400/50 cursor-pointer transition-all active:scale-[0.99]"
                         >
                             <div className="flex items-center gap-3.5">
-                                <span className="text-2xl p-2 rounded-xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-cyan-500/20">{place.icon}</span>
+                                <div className="p-2.5 rounded-xl bg-blue-50 dark:bg-slate-950/80 border border-blue-200 dark:border-cyan-500/30 flex items-center justify-center shadow-sm">
+                                    {renderPlaceIcon(place.icon)}
+                                </div>
                                 <div>
                                     <h4 className="text-sm font-extrabold text-slate-900 dark:text-white">{place.name}</h4>
                                     <p className="text-xs text-slate-500 dark:text-gray-400">{place.address}</p>
