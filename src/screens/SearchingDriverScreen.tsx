@@ -26,31 +26,31 @@ export const SearchingDriverScreen: React.FC = () => {
             </div>
 
             {/* Searching Driver Cyber HUD Panel */}
-            <div className="relative z-20 glass-panel rounded-t-[40px] border-t border-cyan-400/30 p-6 shadow-2xl space-y-4 animate-slideUp text-white">
+            <div className="relative z-20 glass-panel rounded-t-[40px] border-t border-slate-200 dark:border-cyan-400/30 p-6 shadow-2xl space-y-4 animate-slideUp text-slate-900 dark:text-white">
 
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3.5">
                         <div className="relative flex items-center justify-center">
-                            <span className="w-9 h-9 rounded-full bg-cyan-400/20 animate-ping absolute" />
-                            <Loader2 className="w-7 h-7 text-cyan-400 animate-spin" />
+                            <span className="w-9 h-9 rounded-full bg-blue-500/20 dark:bg-cyan-400/20 animate-ping absolute" />
+                            <Loader2 className="w-7 h-7 text-[#0221bf] dark:text-cyan-400 animate-spin" />
                         </div>
                         <div>
-                            <h3 className="font-extrabold text-base flex items-center gap-1.5">
-                                Finding GoNex Driver <Zap className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+                            <h3 className="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-1.5">
+                                Finding GoNex Driver <Zap className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400 animate-pulse" />
                             </h3>
-                            <p className="text-xs text-cyan-200/70 font-semibold">Scanning 3.2 mi radius...</p>
+                            <p className="text-xs text-slate-600 dark:text-cyan-200/70 font-semibold">Scanning 3.2 mi radius...</p>
                         </div>
                     </div>
 
-                    <span className="px-3 py-1 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-black">
+                    <span className="px-3 py-1 rounded-xl bg-blue-50 dark:bg-cyan-500/10 border border-blue-200 dark:border-cyan-500/30 text-[#0221bf] dark:text-cyan-400 text-xs font-black">
                         {selectedRide.name}
                     </span>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-cyan-500/20 flex items-center justify-between text-xs font-bold">
-                    <span className="text-gray-400">Estimated Dispatch</span>
-                    <span className="text-emerald-400 font-extrabold flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <div className="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-cyan-500/20 flex items-center justify-between text-xs font-bold">
+                    <span className="text-slate-500 dark:text-gray-400">Estimated Dispatch</span>
+                    <span className="text-emerald-700 dark:text-emerald-400 font-extrabold flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                         ~ 3-4 minutes
                     </span>
                 </div>
@@ -58,7 +58,7 @@ export const SearchingDriverScreen: React.FC = () => {
                 <div className="flex items-center gap-3 pt-1">
                     <button
                         onClick={cancelRide}
-                        className="w-1/3 py-3.5 bg-red-950/40 text-red-400 font-bold text-xs rounded-2xl border border-red-500/30 hover:bg-red-900/60 transition-colors flex items-center justify-center gap-1.5 active:scale-95"
+                        className="w-1/3 py-3.5 bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 font-bold text-xs rounded-2xl border border-red-200 dark:border-red-500/30 hover:bg-red-100 dark:hover:bg-red-900/60 transition-colors flex items-center justify-center gap-1.5 active:scale-95"
                     >
                         <X className="w-4 h-4" />
                         <span>Cancel</span>
@@ -91,7 +91,7 @@ export const ActiveRideScreen: React.FC = () => {
     }, []);
 
     return (
-        <div className="relative flex flex-col h-full min-h-screen cyber-bg-dark text-white overflow-hidden select-none">
+        <div className="relative flex flex-col h-full min-h-screen cyber-bg-dark text-slate-900 dark:text-white overflow-hidden select-none">
             <Header title="Live Navigation" showBack={false} />
 
             {/* Live Driver Map Tracking */}
@@ -100,7 +100,7 @@ export const ActiveRideScreen: React.FC = () => {
             </div>
 
             {/* Active Driver Cyber Glass HUD */}
-            <div className="relative z-20 glass-panel rounded-t-[40px] border-t border-cyan-400/30 p-5 shadow-2xl space-y-4 animate-slideUp text-white">
+            <div className="relative z-20 glass-panel rounded-t-[40px] border-t border-slate-200 dark:border-cyan-400/30 p-5 shadow-2xl space-y-4 animate-slideUp text-slate-900 dark:text-white">
 
                 {/* Driver Card Component */}
                 <DriverCard
@@ -111,18 +111,18 @@ export const ActiveRideScreen: React.FC = () => {
                 />
 
                 {/* Trip Progress Bar */}
-                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-950/80 border border-cyan-500/20 text-xs font-bold">
+                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-cyan-500/20 text-xs font-bold">
                     <div>
-                        <span className="text-gray-400 block uppercase text-[10px]">Total Fare</span>
-                        <span className="text-xl font-black text-white">
+                        <span className="text-slate-500 dark:text-gray-400 block uppercase text-[10px]">Total Fare</span>
+                        <span className="text-xl font-black text-slate-900 dark:text-white">
                             ${fare.finalFare.toFixed(2)}
                         </span>
                     </div>
 
                     <div className="text-right">
-                        <span className="text-gray-400 block uppercase text-[10px]">Trip Status</span>
-                        <span className="text-emerald-400 font-extrabold flex items-center gap-1.5">
-                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
+                        <span className="text-slate-500 dark:text-gray-400 block uppercase text-[10px]">Trip Status</span>
+                        <span className="text-emerald-700 dark:text-emerald-400 font-extrabold flex items-center gap-1.5">
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
                             En Route
                         </span>
                     </div>
@@ -132,7 +132,7 @@ export const ActiveRideScreen: React.FC = () => {
                 <div className="flex items-center gap-3">
                     <button
                         onClick={cancelRide}
-                        className="w-1/3 py-3.5 bg-slate-900 text-gray-300 font-bold text-xs rounded-2xl border border-gray-700 hover:bg-red-950/40 hover:text-red-400 transition-colors"
+                        className="w-1/3 py-3.5 bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-gray-300 font-bold text-xs rounded-2xl border border-slate-300 dark:border-gray-700 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                     >
                         Cancel
                     </button>

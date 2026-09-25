@@ -45,58 +45,58 @@ export const ProfileScreen: React.FC = () => {
                             <Camera className="w-4 h-4" />
                         </button>
                     </div>
-                    <h2 className="text-lg font-black mt-3 text-white flex items-center gap-1.5">
-                        {firstName} {lastName} <Sparkles className="w-4 h-4 text-cyan-400" />
+                    <h2 className="text-lg font-black mt-3 text-slate-900 dark:text-white flex items-center gap-1.5">
+                        {firstName} {lastName} <Sparkles className="w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
                     </h2>
-                    <p className="text-xs text-cyan-200/70 font-semibold">{email}</p>
+                    <p className="text-xs text-slate-600 dark:text-cyan-200/70 font-semibold">{email}</p>
                 </div>
 
                 {saved && (
-                    <div className="p-3 rounded-2xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 text-xs font-bold text-center flex items-center justify-center gap-2 animate-fadeIn">
+                    <div className="p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-500/40 text-emerald-700 dark:text-emerald-400 text-xs font-bold text-center flex items-center justify-center gap-2 animate-fadeIn">
                         <CheckCircle className="w-4 h-4" />
                         Profile updated successfully!
                     </div>
                 )}
 
-                <div className="p-5 rounded-3xl glass-card border border-cyan-400/30 space-y-3.5 shadow-2xl">
+                <div className="p-5 rounded-3xl glass-card border border-slate-200 dark:border-cyan-400/30 space-y-3.5 shadow-2xl">
                     <div className="grid grid-cols-2 gap-3">
                         <div>
-                            <label className="block text-[10px] font-black uppercase text-cyan-400 tracking-wider mb-1">First Name</label>
+                            <label className="block text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-wider mb-1">First Name</label>
                             <input
                                 type="text"
                                 value={firstName}
                                 onChange={(e) => setFirstName(e.target.value)}
-                                className="w-full px-3.5 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-white"
+                                className="w-full px-3.5 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-slate-900 dark:text-white"
                             />
                         </div>
                         <div>
-                            <label className="block text-[10px] font-black uppercase text-cyan-400 tracking-wider mb-1">Last Name</label>
+                            <label className="block text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-wider mb-1">Last Name</label>
                             <input
                                 type="text"
                                 value={lastName}
                                 onChange={(e) => setLastName(e.target.value)}
-                                className="w-full px-3.5 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-white"
+                                className="w-full px-3.5 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-slate-900 dark:text-white"
                             />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-[10px] font-black uppercase text-cyan-400 tracking-wider mb-1">Email Address</label>
+                        <label className="block text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-wider mb-1">Email Address</label>
                         <input
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full px-3.5 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-white"
+                            className="w-full px-3.5 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-slate-900 dark:text-white"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-[10px] font-black uppercase text-cyan-400 tracking-wider mb-1">Phone Number</label>
+                        <label className="block text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-wider mb-1">Phone Number</label>
                         <input
                             type="text"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
-                            className="w-full px-3.5 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-white"
+                            className="w-full px-3.5 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-slate-900 dark:text-white"
                         />
                     </div>
                 </div>
@@ -116,7 +116,7 @@ export const ProfileScreen: React.FC = () => {
 
 export const NotificationsScreen: React.FC = () => {
     return (
-        <div className="flex flex-col min-h-screen cyber-bg-dark p-5 text-white transition-colors duration-200 select-none">
+        <div className="flex flex-col min-h-screen cyber-bg-dark p-5 text-slate-900 dark:text-white transition-colors duration-200 select-none">
             <Sidebar />
             <Header title="Notifications" showBack={true} />
 
@@ -124,16 +124,16 @@ export const NotificationsScreen: React.FC = () => {
                 {MOCK_NOTIFICATIONS.map((n) => (
                     <div
                         key={n.id}
-                        className="p-4 rounded-3xl glass-card border border-cyan-400/20 space-y-1 hover:border-cyan-400 transition-all shadow-xl"
+                        className="p-4 rounded-3xl glass-card border border-slate-200 dark:border-cyan-400/20 space-y-1 hover:border-[#0221bf] dark:hover:border-cyan-400 transition-all shadow-xl text-slate-900 dark:text-white"
                     >
                         <div className="flex items-center justify-between">
-                            <h3 className="font-extrabold text-xs text-white flex items-center gap-2">
-                                <Bell className="w-4 h-4 text-cyan-400" />
+                            <h3 className="font-extrabold text-xs text-slate-900 dark:text-white flex items-center gap-2">
+                                <Bell className="w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
                                 {n.title}
                             </h3>
-                            <span className="text-[10px] text-gray-400 font-bold">{n.time}</span>
+                            <span className="text-[10px] text-slate-500 dark:text-gray-400 font-bold">{n.time}</span>
                         </div>
-                        <p className="text-xs text-cyan-200/80 pl-6 leading-relaxed">
+                        <p className="text-xs text-slate-600 dark:text-cyan-200/80 pl-6 leading-relaxed">
                             {n.message}
                         </p>
                     </div>

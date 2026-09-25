@@ -1,3 +1,6 @@
+import standardXImg from '../assets/standard_x.png';
+import standardXlImg from '../assets/standard_xl.png';
+
 export interface RideType {
     id: string;
     name: string;
@@ -5,36 +8,39 @@ export interface RideType {
     capacity: number;
     baseFare: number;
     minimumFare: number;
-    perMile: number; // Changed from perDistance to perMile as requested by user
+    perMile: number;
     perMinuteWait: number;
     eta: string;
     image: string;
+    badge?: string;
 }
 
 export const RIDE_TYPES: RideType[] = [
     {
         id: "standard-x",
         name: "Standard X",
-        description: "Get Standard X Rides",
+        description: "Affordable, quick everyday rides",
         capacity: 4,
         baseFare: 5.00,
         minimumFare: 10.00,
         perMile: 2.35,
-        perMinuteWait: 0.00,
-        eta: "4 min away",
-        image: "🚗"
+        perMinuteWait: 0.25,
+        eta: "3 min away",
+        image: standardXImg,
+        badge: "POPULAR"
     },
     {
         id: "standard-xl",
         name: "Standard XL",
-        description: "Get Standard XL Rides",
+        description: "Spacious SUVs for groups & extra luggage",
         capacity: 7,
         baseFare: 10.00,
-        minimumFare: 10.00,
-        perMile: 2.50,
-        perMinuteWait: 1.25,
-        eta: "6 min away",
-        image: "🚙"
+        minimumFare: 15.00,
+        perMile: 3.20,
+        perMinuteWait: 0.40,
+        eta: "5 min away",
+        image: standardXlImg,
+        badge: "GROUP CHOICE"
     }
 ];
 

@@ -41,6 +41,17 @@ export interface RideHistoryItem {
     rating?: number;
 }
 
+export interface ScheduledRideItem {
+    id: string;
+    type: string;
+    pickup: string;
+    destination: string;
+    scheduledDate: string;
+    scheduledTime: string;
+    estimatedFare: number;
+    status: 'Scheduled' | 'Cancelled';
+}
+
 export interface PaymentMethod {
     id: string;
     type: 'Visa' | 'Mastercard' | 'ApplePay' | 'Cash';
@@ -124,6 +135,29 @@ export const MOCK_RIDE_HISTORY: RideHistoryItem[] = [
         amount: 24.50,
         status: 'Completed',
         rating: 4,
+    }
+];
+
+export const MOCK_SCHEDULED_RIDES: ScheduledRideItem[] = [
+    {
+        id: 'sr-1',
+        type: 'Standard X',
+        pickup: '123 Main Street, Chicago',
+        destination: 'Chicago O\'Hare International Airport',
+        scheduledDate: '2026-09-26',
+        scheduledTime: '06:30 AM',
+        estimatedFare: 52.40,
+        status: 'Scheduled'
+    },
+    {
+        id: 'sr-2',
+        type: 'Standard XL',
+        pickup: 'Work, Willis Tower',
+        destination: 'Union Station, Chicago',
+        scheduledDate: '2026-09-28',
+        scheduledTime: '05:15 PM',
+        estimatedFare: 28.90,
+        status: 'Scheduled'
     }
 ];
 

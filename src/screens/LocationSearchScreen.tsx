@@ -19,49 +19,49 @@ export const LocationSearchScreen: React.FC = () => {
             <div className="flex items-center gap-3 pt-3 mb-5">
                 <button
                     onClick={goBack}
-                    className="p-2.5 rounded-2xl glass-panel hover:border-cyan-400 text-white transition-all active:scale-95 shadow-md"
+                    className="p-2.5 rounded-2xl glass-panel hover:border-[#0221bf] dark:hover:border-cyan-400 text-slate-800 dark:text-white transition-all active:scale-95 shadow-md"
                 >
                     <ArrowLeft className="w-5 h-5" />
                 </button>
                 <div>
-                    <h1 className="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
-                        Plan Journey <Sparkles className="w-4 h-4 text-cyan-400" />
+                    <h1 className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+                        Plan Journey <Sparkles className="w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
                     </h1>
-                    <p className="text-xs text-cyan-200/70 font-semibold">Select pickup & destination points</p>
+                    <p className="text-xs text-slate-600 dark:text-cyan-200/70 font-semibold">Select pickup & destination points</p>
                 </div>
             </div>
 
             {/* Cyber Dual Location Input Card */}
-            <div className="p-5 rounded-3xl glass-card border border-cyan-400/30 space-y-4 shadow-2xl">
+            <div className="p-5 rounded-3xl glass-card border border-slate-200 dark:border-cyan-400/30 space-y-4 shadow-2xl">
 
                 {/* Pickup Address Input */}
                 <div className="flex items-center gap-3.5">
-                    <div className="w-4 h-4 rounded-full bg-emerald-400 ring-4 ring-emerald-500/30 shadow-lg shadow-emerald-500/50" />
+                    <div className="w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-emerald-500/30 shadow-lg" />
                     <div className="flex-1">
-                        <label className="block text-[10px] font-black uppercase text-emerald-400 tracking-wider">PICKUP ADDRESS</label>
+                        <label className="block text-[10px] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">PICKUP ADDRESS</label>
                         <input
                             type="text"
                             value={pickupInput}
                             onChange={(e) => setPickupInput(e.target.value)}
                             placeholder="Current location"
-                            className="w-full bg-transparent font-extrabold text-sm text-white focus:outline-none placeholder-gray-500"
+                            className="w-full bg-transparent font-extrabold text-sm text-slate-900 dark:text-white focus:outline-none placeholder-slate-400"
                         />
                     </div>
                 </div>
 
-                <div className="border-t border-dashed border-cyan-500/30 ml-7" />
+                <div className="border-t border-dashed border-slate-300 dark:border-cyan-500/30 ml-7" />
 
                 {/* Destination Input */}
                 <div className="flex items-center gap-3.5">
-                    <div className="w-4 h-4 rounded-full bg-[#0221bf] ring-4  shadow-lg shadow-cyan-500/50" />
+                    <div className="w-4 h-4 rounded-full bg-[#0221bf] ring-4 ring-blue-500/30 shadow-lg" />
                     <div className="flex-1">
-                        <label className="block text-[10px] font-black uppercase text-cyan-400 tracking-wider">DESTINATION ADDRESS</label>
+                        <label className="block text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-wider">DESTINATION ADDRESS</label>
                         <input
                             type="text"
                             value={destInput}
                             onChange={(e) => setDestInput(e.target.value)}
                             placeholder="Where are you going?"
-                            className="w-full bg-transparent font-extrabold text-sm text-white focus:outline-none placeholder-gray-500"
+                            className="w-full bg-transparent font-extrabold text-sm text-slate-900 dark:text-white focus:outline-none placeholder-slate-400"
                         />
                     </div>
                 </div>
@@ -70,7 +70,7 @@ export const LocationSearchScreen: React.FC = () => {
 
             {/* Quick Favorites & Saved Places */}
             <div className="mt-6 flex-1">
-                <h3 className="text-[11px] font-black text-cyan-400/80 uppercase tracking-widest mb-3">
+                <h3 className="text-[11px] font-black text-[#0221bf] dark:text-cyan-400/80 uppercase tracking-widest mb-3">
                     Favorites & Recent Searches
                 </h3>
 
@@ -81,16 +81,16 @@ export const LocationSearchScreen: React.FC = () => {
                             onClick={() => {
                                 setDestInput(place.address);
                             }}
-                            className="flex items-center justify-between p-4 rounded-2xl glass-card hover:border-cyan-400/50 cursor-pointer transition-all active:scale-[0.99]"
+                            className="flex items-center justify-between p-4 rounded-2xl glass-card hover:border-[#0221bf] dark:hover:border-cyan-400/50 cursor-pointer transition-all active:scale-[0.99]"
                         >
                             <div className="flex items-center gap-3.5">
-                                <span className="text-2xl p-2 rounded-xl bg-slate-950/80 border border-cyan-500/20">{place.icon}</span>
+                                <span className="text-2xl p-2 rounded-xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-cyan-500/20">{place.icon}</span>
                                 <div>
-                                    <h4 className="text-sm font-extrabold text-white">{place.name}</h4>
-                                    <p className="text-xs text-gray-400">{place.address}</p>
+                                    <h4 className="text-sm font-extrabold text-slate-900 dark:text-white">{place.name}</h4>
+                                    <p className="text-xs text-slate-500 dark:text-gray-400">{place.address}</p>
                                 </div>
                             </div>
-                            <span className="text-xs font-bold text-cyan-400 px-3 py-1 rounded-xl bg-cyan-500/10 border border-cyan-500/30">
+                            <span className="text-xs font-bold text-[#0221bf] dark:text-cyan-400 px-3 py-1 rounded-xl bg-blue-50 dark:bg-cyan-500/10 border border-blue-200 dark:border-cyan-500/30">
                                 Select
                             </span>
                         </div>

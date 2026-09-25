@@ -12,28 +12,28 @@ export const MobileFrameWrapper: React.FC<MobileFrameWrapperProps> = ({ children
     const { pickup } = useRide();
 
     return (
-        <div className="min-h-screen cyber-bg-dark text-white flex flex-col items-center justify-center p-0 sm:p-4 md:p-6 select-none font-sans antialiased relative overflow-hidden">
+        <div className="min-h-screen cyber-bg-dark text-slate-900 dark:text-white flex flex-col items-center justify-center p-0 sm:p-4 md:p-6 select-none font-sans antialiased relative overflow-hidden">
 
             {/* Ambient Background Glowing Orbs */}
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#0221bf]/15 rounded-full blur-3xl pointer-events-none animate-pulse" />
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none animate-pulse" />
 
             {/* Top Floating Controls Bar */}
-            <div className="hidden sm:flex items-center justify-between w-full max-w-md mb-3 px-3 text-xs font-bold text-gray-400 z-50">
-                <div className="flex items-center gap-2 bg-[#051336]/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#0221bf]/30 shadow-lg">
+            <div className="hidden sm:flex items-center justify-between w-full max-w-md mb-3 px-3 text-xs font-bold text-slate-600 dark:text-gray-400 z-50">
+                <div className="flex items-center gap-2 bg-white/90 dark:bg-[#051336]/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#0221bf]/20 dark:border-[#0221bf]/30 shadow-lg">
                     <div className="w-5 h-5 rounded-md bg-[#030A1C] border border-cyan-400/40 p-0.5 flex items-center justify-center">
                         <img src={gonexLogo} alt="GoNex" className="w-full h-full object-contain" />
                     </div>
-                    <span className="text-white font-extrabold tracking-wider text-[11px] uppercase bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-300 to-indigo-300">
+                    <span className="text-[#0221bf] dark:text-white font-extrabold tracking-wider text-[11px] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#0221bf] via-blue-600 to-indigo-600 dark:from-cyan-400 dark:via-blue-300 dark:to-indigo-300">
                         GoNex Mobility Tech
                     </span>
                 </div>
 
                 <button
                     onClick={() => setIsFrameEnabled(!isFrameEnabled)}
-                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/60 hover:border-cyan-400/50 text-gray-300 hover:text-white transition-all shadow-lg hover:shadow-cyan-500/20"
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700/60 hover:border-cyan-400/50 text-slate-700 dark:text-gray-300 hover:text-[#0221bf] dark:hover:text-white transition-all shadow-md"
                 >
-                    {isFrameEnabled ? <Monitor className="w-3.5 h-3.5 text-cyan-400" /> : <Smartphone className="w-3.5 h-3.5 text-cyan-400" />}
+                    {isFrameEnabled ? <Monitor className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" /> : <Smartphone className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" />}
                     <span className="text-xs font-semibold">{isFrameEnabled ? 'Full Screen' : 'Device Frame'}</span>
                 </button>
             </div>

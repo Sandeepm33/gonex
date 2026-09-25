@@ -24,61 +24,61 @@ export const LoginScreen: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col justify-between min-h-screen cyber-bg-dark p-6 text-white transition-colors duration-200 select-none">
+        <div className="flex flex-col justify-between min-h-screen cyber-bg-dark p-6 text-slate-900 dark:text-white transition-colors duration-200 select-none">
 
             {/* Brand Header */}
             <div className="flex flex-col items-center pt-6 text-center">
-                <div className="w-20 h-20 rounded-3xl bg-[#030A1C] border-2 border-cyan-400/50 p-2 flex items-center justify-center shadow-[0_0_35px_rgba(2,33,191,0.6)] mb-3 ring-2 ring-cyan-300/30 overflow-hidden">
+                <div className="w-20 h-20 rounded-3xl bg-white dark:bg-[#030A1C] border-2 border-blue-400/50 dark:border-cyan-400/50 p-2 flex items-center justify-center shadow-lg mb-3 ring-2 ring-blue-300/30 dark:ring-cyan-300/30 overflow-hidden">
                     <img src={gonexLogo} alt="GoNex Logo" className="w-full h-full object-contain" />
                 </div>
-                <h1 className="text-3xl font-black tracking-wider text-white flex items-center gap-1.5 uppercase">
-                    GoNex <Sparkles className="w-5 h-5 text-cyan-400" />
+                <h1 className="text-3xl font-black tracking-wider text-slate-900 dark:text-white flex items-center gap-1.5 uppercase">
+                    GoNex <Sparkles className="w-5 h-5 text-[#0221bf] dark:text-cyan-400" />
                 </h1>
-                <p className="text-xs text-cyan-200/80 mt-1 font-semibold">Technology for Next-Gen Mobility</p>
+                <p className="text-xs text-slate-600 dark:text-cyan-200/80 mt-1 font-semibold">Technology for Next-Gen Mobility</p>
             </div>
 
             {/* Login Form */}
             <form onSubmit={handleLogin} className="w-full max-w-sm mx-auto space-y-4 my-auto">
                 {error && (
-                    <div className="p-3 rounded-2xl bg-red-950/60 border border-red-500/40 text-red-400 text-xs font-semibold text-center">
+                    <div className="p-3 rounded-2xl bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-500/40 text-red-600 dark:text-red-400 text-xs font-semibold text-center">
                         {error}
                     </div>
                 )}
 
-                <div className="p-5 rounded-3xl glass-card border border-cyan-400/30 space-y-3.5 shadow-2xl">
+                <div className="p-5 rounded-3xl glass-card border border-slate-200 dark:border-cyan-400/30 space-y-3.5 shadow-2xl">
                     <div>
-                        <label className="block text-[10px] font-black uppercase text-cyan-400 tracking-wider mb-1.5">
+                        <label className="block text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-wider mb-1.5">
                             Email or Phone Number
                         </label>
                         <div className="relative">
-                            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400" />
+                            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
                             <input
                                 type="text"
                                 value={emailOrPhone}
                                 onChange={(e) => setEmailOrPhone(e.target.value)}
                                 placeholder="Enter email or phone"
-                                className="w-full pl-10 pr-4 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-white placeholder-gray-500"
+                                className="w-full pl-10 pr-4 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-slate-900 dark:text-white placeholder-slate-400"
                             />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-[10px] font-black uppercase text-cyan-400 tracking-wider mb-1.5">
+                        <label className="block text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-wider mb-1.5">
                             Account Password
                         </label>
                         <div className="relative">
-                            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400" />
+                            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
                             <input
                                 type={showPassword ? 'text' : 'password'}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Enter password"
-                                className="w-full pl-10 pr-10 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-white placeholder-gray-500"
+                                className="w-full pl-10 pr-10 py-3 rounded-2xl glass-input text-xs font-bold focus:outline-none text-slate-900 dark:text-white placeholder-slate-400"
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-cyan-400 hover:text-white"
+                                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#0221bf] dark:text-cyan-400 hover:text-slate-900 dark:hover:text-white"
                             >
                                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                             </button>
@@ -89,7 +89,7 @@ export const LoginScreen: React.FC = () => {
                         <button
                             type="button"
                             onClick={() => navigate('forgot-password')}
-                            className="text-xs font-extrabold text-cyan-400 hover:underline"
+                            className="text-xs font-extrabold text-[#0221bf] dark:text-cyan-400 hover:underline"
                         >
                             Forgot Password?
                         </button>
@@ -106,9 +106,9 @@ export const LoginScreen: React.FC = () => {
 
                 <div className="relative my-4 text-center">
                     <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-cyan-500/20" />
+                        <div className="w-full border-t border-slate-200 dark:border-cyan-500/20" />
                     </div>
-                    <span className="relative bg-[#040814] px-4 text-[10px] font-black uppercase text-cyan-400/80">
+                    <span className="relative bg-slate-50 dark:bg-[#040814] px-4 text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400/80">
                         OR QUICK ACCESS
                     </span>
                 </div>
@@ -116,7 +116,7 @@ export const LoginScreen: React.FC = () => {
                 <button
                     type="button"
                     onClick={() => navigate('home')}
-                    className="w-full py-3.5 glass-panel hover:border-cyan-400 text-white font-extrabold text-xs rounded-2xl border border-cyan-500/20 flex items-center justify-center gap-3 transition-all active:scale-98"
+                    className="w-full py-3.5 glass-panel hover:border-[#0221bf] dark:hover:border-cyan-400 text-slate-800 dark:text-white font-extrabold text-xs rounded-2xl border border-slate-200 dark:border-cyan-500/20 flex items-center justify-center gap-3 transition-all active:scale-98 shadow-md"
                 >
                     <svg className="w-4 h-4" viewBox="0 0 24 24">
                         <path
@@ -141,11 +141,11 @@ export const LoginScreen: React.FC = () => {
             </form>
 
             {/* Footer link */}
-            <div className="text-center pb-4 text-xs font-semibold text-gray-400">
+            <div className="text-center pb-4 text-xs font-semibold text-slate-500 dark:text-gray-400">
                 Don't have an account?{' '}
                 <button
                     onClick={() => navigate('register')}
-                    className="text-cyan-400 font-extrabold hover:underline"
+                    className="text-[#0221bf] dark:text-cyan-400 font-extrabold hover:underline"
                 >
                     Create Cyber Account
                 </button>

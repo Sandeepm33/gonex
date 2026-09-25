@@ -21,49 +21,49 @@ export const RideCompletedScreen: React.FC = () => {
                 </div>
 
                 <div>
-                    <h1 className="text-2xl font-black text-white tracking-tight flex items-center justify-center gap-1.5">
-                        Trip Completed! <Sparkles className="w-5 h-5 text-cyan-400" />
+                    <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight flex items-center justify-center gap-1.5">
+                        Trip Completed! <Sparkles className="w-5 h-5 text-[#0221bf] dark:text-cyan-400" />
                     </h1>
-                    <p className="text-xs text-cyan-200/70 mt-1 font-semibold">
+                    <p className="text-xs text-slate-600 dark:text-cyan-200/70 mt-1 font-semibold">
                         Your ride ended safely. Thank you for using GoNex.
                     </p>
                 </div>
 
                 {/* Itemized Receipt Card */}
-                <div className="p-5 rounded-3xl glass-card border border-cyan-400/30 text-left space-y-3 shadow-2xl">
-                    <div className="flex items-center justify-between pb-2 border-b border-cyan-500/20">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">
+                <div className="p-5 rounded-3xl glass-card border border-slate-200 dark:border-cyan-400/30 text-left space-y-3 shadow-2xl text-slate-900 dark:text-white">
+                    <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-cyan-500/20">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-[#0221bf] dark:text-cyan-400">
                             DIGITAL RECEIPT
                         </span>
-                        <span className="text-xs font-bold text-gray-400">
+                        <span className="text-xs font-bold text-slate-500 dark:text-gray-400">
                             {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </span>
                     </div>
 
                     <div className="text-xs font-bold space-y-1.5">
-                        <p className="text-gray-400">Pickup: <strong className="text-white">{pickup}</strong></p>
-                        <p className="text-gray-400">Dropoff: <strong className="text-white">{destination}</strong></p>
+                        <p className="text-slate-600 dark:text-gray-400">Pickup: <strong className="text-slate-900 dark:text-white">{pickup}</strong></p>
+                        <p className="text-slate-600 dark:text-gray-400">Dropoff: <strong className="text-slate-900 dark:text-white">{destination}</strong></p>
                     </div>
 
                     <div className="grid grid-cols-3 gap-2 pt-2 text-center">
-                        <div className="p-2.5 rounded-2xl bg-slate-950/80 border border-cyan-500/20">
-                            <span className="text-[9px] text-cyan-400 font-black block">DISTANCE</span>
-                            <span className="text-xs font-extrabold text-white">{distanceMiles} mi</span>
+                        <div className="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-cyan-500/20">
+                            <span className="text-[9px] text-[#0221bf] dark:text-cyan-400 font-black block">DISTANCE</span>
+                            <span className="text-xs font-extrabold text-slate-900 dark:text-white">{distanceMiles} mi</span>
                         </div>
-                        <div className="p-2.5 rounded-2xl bg-slate-950/80 border border-cyan-500/20">
-                            <span className="text-[9px] text-cyan-400 font-black block">DURATION</span>
-                            <span className="text-xs font-extrabold text-white">{estimatedMinutes} min</span>
+                        <div className="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-cyan-500/20">
+                            <span className="text-[9px] text-[#0221bf] dark:text-cyan-400 font-black block">DURATION</span>
+                            <span className="text-xs font-extrabold text-slate-900 dark:text-white">{estimatedMinutes} min</span>
                         </div>
-                        <div className="p-2.5 rounded-2xl bg-slate-950/80 border border-cyan-500/20">
-                            <span className="text-[9px] text-cyan-400 font-black block">TOTAL FARE</span>
-                            <span className="text-xs font-black text-cyan-300">${fare.finalFare.toFixed(2)}</span>
+                        <div className="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-cyan-500/20">
+                            <span className="text-[9px] text-[#0221bf] dark:text-cyan-400 font-black block">TOTAL FARE</span>
+                            <span className="text-xs font-black text-[#0221bf] dark:text-cyan-300">${fare.finalFare.toFixed(2)}</span>
                         </div>
                     </div>
                 </div>
 
                 {/* Interactive Star Rating Widget */}
-                <div className="p-5 rounded-3xl glass-panel border border-cyan-400/30 text-center space-y-3 shadow-2xl">
-                    <h3 className="text-xs font-extrabold text-white">
+                <div className="p-5 rounded-3xl glass-panel border border-slate-200 dark:border-cyan-400/30 text-center space-y-3 shadow-2xl text-slate-900 dark:text-white">
+                    <h3 className="text-xs font-extrabold text-slate-900 dark:text-white">
                         Rate Your Driver & Experience
                     </h3>
 
@@ -78,7 +78,7 @@ export const RideCompletedScreen: React.FC = () => {
                                 <Star
                                     className={`w-7 h-7 ${star <= rating
                                         ? 'fill-amber-400 text-amber-400 drop-shadow-[0_0_10px_rgba(245,158,11,0.6)]'
-                                        : 'text-slate-700'
+                                        : 'text-slate-300 dark:text-slate-700'
                                         }`}
                                 />
                             </button>
@@ -89,7 +89,7 @@ export const RideCompletedScreen: React.FC = () => {
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         placeholder="Share feedback on your driver or trip... (Optional)"
-                        className="w-full p-3 rounded-2xl glass-input text-xs font-semibold focus:outline-none text-white placeholder-gray-500"
+                        className="w-full p-3 rounded-2xl glass-input text-xs font-semibold focus:outline-none text-slate-900 dark:text-white placeholder-slate-400"
                         rows={2}
                     />
                 </div>
