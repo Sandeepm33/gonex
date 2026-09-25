@@ -12,10 +12,10 @@ import {
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import Constants from 'expo-constants';
-import AppWeb from './src/App';
 
 export default function App() {
     if (Platform.OS === 'web') {
+        const AppWeb = require('./src/App').default;
         return <AppWeb />;
     }
 

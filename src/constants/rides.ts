@@ -26,7 +26,7 @@ export const RIDE_TYPES: RideType[] = [
         perMile: 2.35,
         perMinuteWait: 0.25,
         eta: "3 min away",
-        image: standardXImg,
+        image: "https://www.volvocars.com/images/cs/v3/assets/blt84e01a6904dbd2e8/blt24bfb4afc201ca69/6a4bb32c061d8c76329634a7/xc60-phev-carousel-4x3.png?branch=prod_alias&quality=85&format=auto&iar=0&w=3840",
         badge: "POPULAR"
     },
     {

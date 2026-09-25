@@ -51,16 +51,13 @@ export const SplashScreen: React.FC = () => {
             {/* Central Branding & Logo */}
             <div className="flex flex-col items-center gap-6 text-center z-10 my-auto max-w-sm">
 
-                {/* Glowing Logo Frame */}
-                <div className="relative group">
-                    <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#0221bf] via-cyan-400 to-blue-600 blur-lg opacity-80 group-hover:opacity-100 transition duration-1000 animate-pulse" />
-                    <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-white dark:bg-[#030A1C] border-2 border-blue-400/50 dark:border-cyan-400/50 flex items-center justify-center p-3 shadow-2xl overflow-hidden">
-                        <img
-                            src={gonexLogo}
-                            alt="GoNex Logo"
-                            className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(0,240,255,0.6)] animate-float"
-                        />
-                    </div>
+                {/* Logo */}
+                <div className="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center p-1">
+                    <img
+                        src={gonexLogo}
+                        alt="GoNex Logo"
+                        className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(0,240,255,0.6)] animate-float"
+                    />
                 </div>
 
                 {/* Brand Name & Acronym Breakdown */}

@@ -37,7 +37,13 @@ export const RideFareSheet: React.FC<RideFareSheetProps> = ({
                 {/* Title Header */}
                 <div className="flex items-center justify-between pb-2 border-b border-gray-100 dark:border-dark-border">
                     <div className="flex items-center gap-3">
-                        <span className="text-3xl">{ride.image}</span>
+                        <div className="w-12 h-12 p-1 rounded-2xl bg-slate-100 dark:bg-dark-surface border border-gray-200 dark:border-dark-border flex items-center justify-center shrink-0">
+                            {typeof ride.image === 'string' && (ride.image.startsWith('http') || ride.image.startsWith('/') || ride.image.startsWith('data:')) ? (
+                                <img src={ride.image} alt={ride.name} className="w-full h-full object-contain rounded-xl drop-shadow-md" />
+                            ) : (
+                                <span className="text-3xl">{ride.image}</span>
+                            )}
+                        </div>
                         <div>
                             <h2 className="text-xl font-black">{ride.name} Fare Breakdown</h2>
                             <p className="text-xs text-gray-500 dark:text-gray-400">Transparent pricing per mile</p>

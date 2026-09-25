@@ -44,7 +44,7 @@ export const OnboardingScreen: React.FC = () => {
             {/* Top Bar with Skip */}
             <div className="flex items-center justify-between pt-2">
                 <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-xl bg-white dark:bg-[#030A1C] border border-blue-400/40 dark:border-cyan-400/40 p-1 flex items-center justify-center shadow-md">
+                    <div className="w-8 h-8 flex items-center justify-center shrink-0">
                         <img src={gonexLogo} alt="GoNex" className="w-full h-full object-contain" />
                     </div>
                     <span className="font-black text-base text-slate-900 dark:text-white tracking-wider flex items-center gap-1">

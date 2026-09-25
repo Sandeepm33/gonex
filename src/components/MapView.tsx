@@ -320,16 +320,16 @@ export const MapView: React.FC<MapViewProps> = ({
             {/* Top Search Bar */}
             {interactive && (
                 <div className={`absolute ${isMapMaximized ? 'top-4' : 'top-20'} left-4 right-4 z-[9999] max-w-full transition-all duration-300`}>
-                    <div className="relative flex items-center bg-white/95 dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-cyan-400/40 shadow-xl p-1 backdrop-blur-xl">
+                    <div className="relative flex items-center bg-white/95 dark:bg-[#051336]/90 rounded-2xl border border-slate-200/80 dark:border-cyan-400/40 shadow-[0_10px_30px_rgba(0,0,0,0.15)] dark:shadow-[0_10px_35px_rgba(0,240,255,0.15)] p-1.5 backdrop-blur-2xl">
                         <div className="pl-3 text-cyan-500 flex items-center gap-1.5">
-                            <Search className="w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
+                            <Search className="w-4 h-4 text-[#0221bf] dark:text-cyan-400 animate-pulse" />
                         </div>
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={handleSearchInput}
-                            placeholder="Search place..."
-                            className="w-full px-2.5 py-1.5 bg-transparent text-xs font-bold text-slate-900 dark:text-white focus:outline-none placeholder-slate-400"
+                            placeholder="Search place or airport..."
+                            className="w-full px-3 py-1.5 bg-transparent text-xs font-extrabold text-slate-900 dark:text-white focus:outline-none placeholder-slate-400 dark:placeholder-slate-400/80"
                         />
                         {searchQuery && (
                             <button
@@ -337,38 +337,39 @@ export const MapView: React.FC<MapViewProps> = ({
                                     setSearchQuery('');
                                     setSearchResults([]);
                                 }}
-                                className="p-1 text-slate-400 hover:text-slate-600 mr-1"
+                                className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors mr-1"
                             >
-                                <X className="w-3.5 h-3.5" />
+                                <X className="w-4 h-4" />
                             </button>
                         )}
                         <button
                             onClick={() => setShowLayerMenu(!showLayerMenu)}
-                            className="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-cyan-300 hover:border-cyan-400 border border-transparent shadow-sm shrink-0"
-                            title="Toggle Google Map Style"
+                            className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-800 dark:to-[#081d4f] text-slate-800 dark:text-cyan-300 hover:border-cyan-400 border border-slate-200/80 dark:border-cyan-500/30 shadow-md flex items-center gap-1.5 shrink-0 active:scale-95 transition-all"
+                            title="Map Style Options"
                         >
                             <Layers className="w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
+                            <span className="text-[10px] font-black uppercase tracking-wider hidden sm:inline">Style</span>
                         </button>
                     </div>
 
                     {/* Search Autocomplete Results Dropdown */}
                     {searchResults.length > 0 && (
-                        <div className="mt-2 p-2 rounded-2xl glass-card border border-slate-200 dark:border-cyan-400/40 shadow-2xl space-y-1 backdrop-blur-2xl max-h-60 overflow-y-auto">
+                        <div className="mt-2.5 p-2 rounded-2xl glass-card border border-slate-200 dark:border-cyan-400/40 shadow-2xl space-y-1 backdrop-blur-2xl max-h-60 overflow-y-auto animate-fadeIn">
                             {searchResults.map((item) => (
                                 <div
                                     key={item.id}
                                     onClick={() => selectPlace(item)}
-                                    className="p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-cyan-500/20 cursor-pointer flex items-center justify-between transition-all group"
+                                    className="p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-cyan-500/20 cursor-pointer flex items-center justify-between transition-all group"
                                 >
-                                    <div className="flex items-center gap-2.5">
-                                        <div className="w-7 h-7 rounded-full bg-blue-50 dark:bg-cyan-500/20 border border-blue-200 dark:border-cyan-400/40 text-[#0221bf] dark:text-cyan-400 flex items-center justify-center">
-                                            <MapPin className="w-3.5 h-3.5" />
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-blue-50 dark:bg-cyan-500/20 border border-blue-200 dark:border-cyan-400/40 text-[#0221bf] dark:text-cyan-400 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                                            <MapPin className="w-4 h-4" />
                                         </div>
                                         <div>
                                             <h4 className="text-xs font-black text-slate-900 dark:text-white group-hover:text-[#0221bf] dark:group-hover:text-cyan-400 transition-colors">
                                                 {item.name}
                                             </h4>
-                                            <p className="text-[10px] text-slate-500 dark:text-slate-300 truncate max-w-[200px]">
+                                            <p className="text-[10px] text-slate-500 dark:text-slate-300 truncate max-w-[220px] font-semibold">
                                                 {item.address}
                                             </p>
                                         </div>
@@ -382,12 +383,16 @@ export const MapView: React.FC<MapViewProps> = ({
 
             {/* Map Style Selector Popup */}
             {showLayerMenu && (
-                <div className={`absolute ${isMapMaximized ? 'top-16' : 'top-36'} left-4 z-[9999] p-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-cyan-400/40 shadow-2xl space-y-2 backdrop-blur-xl animate-fadeIn transition-all duration-300`}>
-                    <h4 className="text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-wider">
-                        Google Map Style
-                    </h4>
+                <div className={`absolute ${isMapMaximized ? 'top-16' : 'top-36'} left-4 z-[9999] p-3.5 rounded-2xl bg-white/95 dark:bg-[#051336]/95 border border-slate-200 dark:border-cyan-400/40 shadow-2xl space-y-2.5 backdrop-blur-2xl animate-fadeIn transition-all duration-300`}>
+                    <div className="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-cyan-500/20">
+                        <h4 className="text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-wider">
+                            Map Aesthetics
+                        </h4>
+                        <span className="text-[9px] font-bold text-slate-400 dark:text-cyan-300/70">Vector engine</span>
+                    </div>
                     <div className="grid grid-cols-2 gap-2 text-xs font-extrabold">
                         {[
+                            { id: 'cyber', label: 'Dark Cyber', icon: '🌃' },
                             { id: 'roadmap', label: 'Roadmap', icon: '🗺️' },
                             { id: 'satellite', label: 'Satellite', icon: '🛰️' },
                             { id: 'hybrid', label: 'Hybrid', icon: '🌐' }
@@ -398,13 +403,13 @@ export const MapView: React.FC<MapViewProps> = ({
                                     setMapStyle(style.id as MapStyleType);
                                     setShowLayerMenu(false);
                                 }}
-                                className={`px-3 py-2 rounded-xl flex items-center gap-1.5 border transition-all ${mapStyle === style.id
-                                    ? 'bg-gradient-to-tr from-[#0221bf] to-cyan-500 text-white border-cyan-400 shadow-md'
-                                    : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-800 hover:border-cyan-400/50'
+                                className={`px-3 py-2 rounded-xl flex items-center gap-2 border transition-all ${mapStyle === style.id
+                                    ? 'bg-gradient-to-r from-[#0221bf] to-cyan-500 text-white border-cyan-300 shadow-md shadow-cyan-500/20 scale-[1.02]'
+                                    : 'bg-slate-100 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-cyan-400/50'
                                     }`}
                             >
                                 <span>{style.icon}</span>
-                                <span>{style.label}</span>
+                                <span className="text-xs font-black">{style.label}</span>
                             </button>
                         ))}
                     </div>
@@ -412,13 +417,13 @@ export const MapView: React.FC<MapViewProps> = ({
             )}
 
             {/* Map Controls: Stacked Vertically on Right Side of Map below Search Bar */}
-            <div className={`absolute ${isMapMaximized ? 'top-16' : 'top-36'} right-4 z-[9999] flex flex-col gap-2 transition-all duration-300`}>
+            <div className={`absolute ${isMapMaximized ? 'top-16' : 'top-36'} right-4 z-[9999] flex flex-col gap-2.5 transition-all duration-300`}>
 
                 {/* Maximum & Minimum Map Toggle Button */}
                 <button
                     onClick={toggleMapMaximize}
-                    className="w-11 h-11 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-cyan-400/40 shadow-xl flex items-center justify-center text-[#0221bf] dark:text-cyan-400 hover:scale-105 active:scale-95 transition-all group"
-                    title={isMapMaximized ? 'Minimize Map' : 'Maximize Map'}
+                    className="w-12 h-12 rounded-2xl bg-white/95 dark:bg-[#051336]/90 border border-slate-200 dark:border-cyan-400/40 shadow-[0_10px_25px_rgba(0,0,0,0.2)] dark:shadow-[0_10px_25px_rgba(0,240,255,0.2)] flex items-center justify-center text-[#0221bf] dark:text-cyan-400 hover:scale-105 active:scale-95 transition-all group backdrop-blur-xl"
+                    title={isMapMaximized ? 'Minimize Map View' : 'Maximize Map View'}
                 >
                     {isMapMaximized ? (
                         <Minimize2 className="w-5 h-5 text-[#0221bf] dark:text-cyan-400 group-hover:scale-110 transition-transform" />
@@ -434,7 +439,7 @@ export const MapView: React.FC<MapViewProps> = ({
                             mapInstanceRef.current.zoomIn();
                         }
                     }}
-                    className="w-11 h-11 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-cyan-400/40 shadow-xl flex items-center justify-center text-[#0221bf] dark:text-cyan-400 hover:scale-105 active:scale-95 transition-all"
+                    className="w-12 h-12 rounded-2xl bg-white/95 dark:bg-[#051336]/90 border border-slate-200 dark:border-cyan-400/40 shadow-[0_10px_25px_rgba(0,0,0,0.2)] dark:shadow-[0_10px_25px_rgba(0,240,255,0.2)] flex items-center justify-center text-[#0221bf] dark:text-cyan-400 hover:scale-105 active:scale-95 transition-all backdrop-blur-xl"
                     title="Zoom In"
                 >
                     <Plus className="w-5 h-5 text-[#0221bf] dark:text-cyan-400" />
@@ -447,7 +452,7 @@ export const MapView: React.FC<MapViewProps> = ({
                             mapInstanceRef.current.zoomOut();
                         }
                     }}
-                    className="w-11 h-11 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-cyan-400/40 shadow-xl flex items-center justify-center text-[#0221bf] dark:text-cyan-400 hover:scale-105 active:scale-95 transition-all"
+                    className="w-12 h-12 rounded-2xl bg-white/95 dark:bg-[#051336]/90 border border-slate-200 dark:border-cyan-400/40 shadow-[0_10px_25px_rgba(0,0,0,0.2)] dark:shadow-[0_10px_25px_rgba(0,240,255,0.2)] flex items-center justify-center text-[#0221bf] dark:text-cyan-400 hover:scale-105 active:scale-95 transition-all backdrop-blur-xl"
                     title="Zoom Out"
                 >
                     <Minus className="w-5 h-5 text-[#0221bf] dark:text-cyan-400" />
@@ -459,8 +464,8 @@ export const MapView: React.FC<MapViewProps> = ({
                         setMapCenter([41.8781, -87.6298]);
                         setMapZoom(13);
                     }}
-                    className="w-11 h-11 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-cyan-400/40 shadow-xl flex items-center justify-center text-[#0221bf] dark:text-cyan-400 hover:scale-105 active:scale-95 transition-all"
-                    title="Recenter Location"
+                    className="w-12 h-12 rounded-2xl bg-white/95 dark:bg-[#051336]/90 border border-slate-200 dark:border-cyan-400/40 shadow-[0_10px_25px_rgba(0,0,0,0.2)] dark:shadow-[0_10px_25px_rgba(0,240,255,0.2)] flex items-center justify-center text-[#0221bf] dark:text-cyan-400 hover:scale-105 active:scale-95 transition-all backdrop-blur-xl"
+                    title="Recenter Map View"
                 >
                     <Compass className="w-5 h-5 text-[#0221bf] dark:text-cyan-400 animate-spin-slow" />
                 </button>

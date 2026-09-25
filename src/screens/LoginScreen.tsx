@@ -28,7 +28,7 @@ export const LoginScreen: React.FC = () => {
 
             {/* Brand Header */}
             <div className="flex flex-col items-center pt-6 text-center">
-                <div className="w-20 h-20 rounded-3xl bg-white dark:bg-[#030A1C] border-2 border-blue-400/50 dark:border-cyan-400/50 p-2 flex items-center justify-center shadow-lg mb-3 ring-2 ring-blue-300/30 dark:ring-cyan-300/30 overflow-hidden">
+                <div className="w-20 h-20 flex items-center justify-center mb-3">
                     <img src={gonexLogo} alt="GoNex Logo" className="w-full h-full object-contain" />
                 </div>
                 <h1 className="text-3xl font-black tracking-wider text-slate-900 dark:text-white flex items-center gap-1.5 uppercase">
@@ -147,7 +147,7 @@ export const LoginScreen: React.FC = () => {
                     onClick={() => navigate('register')}
                     className="text-[#0221bf] dark:text-cyan-400 font-extrabold hover:underline"
                 >
-                    Create Cyber Account
+                    Create  Account
                 </button>
             </div>
 

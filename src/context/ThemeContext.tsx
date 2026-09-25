@@ -12,17 +12,24 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [theme, setTheme] = useState<Theme>(() => {
-        const saved = localStorage.getItem('gonex_theme') as Theme;
-        return saved || 'light';
+        if (typeof localStorage !== 'undefined') {
+            const saved = localStorage.getItem('gonex_theme') as Theme;
+            if (saved) return saved;
+        }
+        return 'light';
     });
 
     useEffect(() => {
-        const root = document.documentElement;
-        localStorage.setItem('gonex_theme', theme);
-        if (theme === 'dark') {
-            root.classList.add('dark');
-        } else {
-            root.classList.remove('dark');
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('gonex_theme', theme);
+        }
+        if (typeof document !== 'undefined') {
+            const root = document.documentElement;
+            if (theme === 'dark') {
+                root.classList.add('dark');
+            } else {
+                root.classList.remove('dark');
+            }
         }
     }, [theme]);
 

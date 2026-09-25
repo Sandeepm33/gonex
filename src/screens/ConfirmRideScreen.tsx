@@ -144,7 +144,9 @@ export const ConfirmRideScreen: React.FC = () => {
                 <div className="flex items-center justify-between p-4.5 rounded-3xl bg-gradient-to-r from-[#0221bf] via-blue-700 to-indigo-800 text-white border border-blue-400/40 dark:border-cyan-400 shadow-2xl">
                     <div className="flex items-center gap-3.5">
                         <div className="w-16 h-16 p-1 rounded-2xl bg-white/10 dark:bg-slate-950/80 border border-white/20 dark:border-cyan-500/30 flex items-center justify-center shrink-0">
-                            {selectedRide.id === 'standard-x' ? (
+                            {typeof selectedRide.image === 'string' && (selectedRide.image.startsWith('http') || selectedRide.image.startsWith('/') || selectedRide.image.startsWith('data:')) ? (
+                                <img src={selectedRide.image} alt={selectedRide.name} className="w-full h-full object-contain rounded-xl drop-shadow-md" />
+                            ) : selectedRide.id === 'standard-x' ? (
                                 <StandardXCarSVG className="w-full h-full" />
                             ) : selectedRide.id === 'standard-xl' ? (
                                 <StandardXlSuvSVG className="w-full h-full" />

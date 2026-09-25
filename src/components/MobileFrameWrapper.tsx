@@ -21,7 +21,7 @@ export const MobileFrameWrapper: React.FC<MobileFrameWrapperProps> = ({ children
             {/* Top Floating Controls Bar */}
             <div className="hidden sm:flex items-center justify-between w-full max-w-md mb-3 px-3 text-xs font-bold text-slate-600 dark:text-gray-400 z-50">
                 <div className="flex items-center gap-2 bg-white/90 dark:bg-[#051336]/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#0221bf]/20 dark:border-[#0221bf]/30 shadow-lg">
-                    <div className="w-5 h-5 rounded-md bg-[#030A1C] border border-cyan-400/40 p-0.5 flex items-center justify-center">
+                    <div className="w-5 h-5 flex items-center justify-center shrink-0">
                         <img src={gonexLogo} alt="GoNex" className="w-full h-full object-contain" />
                     </div>
                     <span className="text-[#0221bf] dark:text-white font-extrabold tracking-wider text-[11px] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#0221bf] via-blue-600 to-indigo-600 dark:from-cyan-400 dark:via-blue-300 dark:to-indigo-300">
@@ -47,7 +47,7 @@ export const MobileFrameWrapper: React.FC<MobileFrameWrapperProps> = ({ children
             >
 
                 {/* Dynamic Island HUD (Frame Mode) */}
-                {isFrameEnabled && (
+                {/* {isFrameEnabled && (
                     <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-50 w-32 h-7 bg-slate-950/90 backdrop-blur-xl rounded-full flex items-center justify-between px-3 border border-white/10 shadow-2xl pointer-events-auto">
                         <div className="flex items-center gap-1.5">
                             <span className="w-2.5 h-2.5 rounded-full bg-slate-800 border border-slate-700" />
@@ -62,7 +62,7 @@ export const MobileFrameWrapper: React.FC<MobileFrameWrapperProps> = ({ children
                             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                         </div>
                     </div>
-                )}
+                )} */}
 
                 {/* Screen Content Wrapper */}
                 <div className="flex-1 relative flex flex-col h-full overflow-hidden">
