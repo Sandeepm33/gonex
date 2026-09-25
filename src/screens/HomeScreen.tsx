@@ -6,7 +6,21 @@ import { useRide } from '../context/RideContext';
 import { MOCK_SAVED_PLACES } from '../constants/mockData';
 
 export const HomeScreen: React.FC = () => {
-    const { pickup, setDestination, setBookingType, isMapMaximized, navigate } = useRide();
+    const { pickup, setDestination, setBookingType, isMapMaximized, navigate, setMapCenter, setMapZoom } = useRide();
+
+    const handleGpsClick = () => {
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const coords: [number, number] = [pos.coords.latitude, pos.coords.longitude];
+                    setMapCenter(coords);
+                    setMapZoom(17);
+                },
+                (err) => console.warn(err),
+                { enableHighAccuracy: true }
+            );
+        }
+    };
 
     const renderPlaceIcon = (iconName: string) => {
         const className = "w-4 h-4 text-[#0221bf] dark:text-cyan-400";
@@ -109,9 +123,13 @@ export const HomeScreen: React.FC = () => {
                             <span className="truncate text-xs font-black">Pickup: {pickup}</span>
                         </div>
 
-                        <span className="text-[10px] font-black uppercase text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/70 px-2.5 py-1 rounded-lg border border-emerald-300 dark:border-emerald-500/40 flex items-center gap-1 flex-shrink-0 shadow-sm">
-                            <ShieldCheck className="w-3.5 h-3.5" /> GPS Active
-                        </span>
+                        <button
+                            onClick={handleGpsClick}
+                            className="text-[10px] font-black uppercase text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/70 px-2.5 py-1 rounded-lg border border-emerald-300 dark:border-emerald-500/40 flex items-center gap-1.5 flex-shrink-0 shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                            title="Recenter Pinpoint GPS Location"
+                        >
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse shadow-[0_0_8px_#10b981]" /> GPS Active
+                        </button>
                     </div>
 
                     {/* Quick Frequent Destinations */}

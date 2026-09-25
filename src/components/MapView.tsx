@@ -9,7 +9,7 @@ import {
     Search,
     MapPin,
     Navigation,
-    Compass,
+    LocateFixed,
     Check,
     X,
     Calendar,
@@ -95,6 +95,25 @@ export const MapView: React.FC<MapViewProps> = ({
     const [searchResults, setSearchResults] = useState<any[]>([]);
     const [isSearchingPlaces, setIsSearchingPlaces] = useState(false);
 
+    const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
+    const isProgrammaticMove = useRef<boolean>(false);
+
+    // Initial Geolocation lookup on mount
+    useEffect(() => {
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const coords: [number, number] = [position.coords.latitude, position.coords.longitude];
+                    setUserLocation(coords);
+                    setMapCenter(coords);
+                    setMapZoom(17);
+                },
+                (err) => console.warn('Initial GPS check:', err),
+                { enableHighAccuracy: true, timeout: 10000 }
+            );
+        }
+    }, []);
+
     // Get reliable Tile URL based on style & dark/light theme
     const getTileUrl = (style: MapStyleType, isDarkMode: boolean) => {
         if (style === 'satellite') {
@@ -103,11 +122,9 @@ export const MapView: React.FC<MapViewProps> = ({
         if (style === 'hybrid') {
             return 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}';
         }
-        if (isDarkMode) {
-            // Crisp, watermark-free Esri World Dark Gray Canvas for dark cyber theme
+        if (isDarkMode || style === 'cyber') {
             return 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}';
         }
-        // Crisp Google Roadmap map tiles for light theme
         return 'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}';
     };
 
@@ -134,24 +151,24 @@ export const MapView: React.FC<MapViewProps> = ({
             markersGroupRef.current = layerGroup;
             mapInstanceRef.current = map;
 
-            // Immediately force invalidateSize after DOM mount to prevent blank tiles
             setTimeout(() => {
                 map.invalidateSize();
             }, 100);
 
-            // Handle zoom & pan sync
             map.on('zoomend', () => {
                 setMapZoom(map.getZoom());
             });
+
             map.on('moveend', () => {
+                if (isProgrammaticMove.current) {
+                    isProgrammaticMove.current = false;
+                    return;
+                }
                 const center = map.getCenter();
                 setMapCenter([center.lat, center.lng]);
             });
-        } else {
-            mapInstanceRef.current.setView(mapCenter, mapZoom, { animate: true });
         }
 
-        // Window resize listener
         const handleResize = () => {
             if (mapInstanceRef.current) {
                 mapInstanceRef.current.invalidateSize();
@@ -186,36 +203,30 @@ export const MapView: React.FC<MapViewProps> = ({
         mapInstanceRef.current.invalidateSize();
     }, [mapStyle, isDark]);
 
-    // Update center
-    useEffect(() => {
-        if (mapInstanceRef.current) {
-            mapInstanceRef.current.flyTo(mapCenter, mapZoom, { duration: 1.2 });
-        }
-    }, [mapCenter, mapZoom]);
-
     // Render Markers & Route
     useEffect(() => {
         if (!mapInstanceRef.current || !markersGroupRef.current) return;
 
         markersGroupRef.current.clearLayers();
 
-        const pickupLat = mapCenter[0] - 0.008;
-        const pickupLng = mapCenter[1] - 0.012;
-        const dropoffLat = mapCenter[0] + 0.012;
-        const dropoffLng = mapCenter[1] + 0.015;
+        const currentGps: [number, number] = userLocation || mapCenter;
+        const [pickupLat, pickupLng] = currentGps;
+        const dropoffLat = currentGps[0] + 0.012;
+        const dropoffLng = currentGps[1] + 0.015;
 
-        // Custom HTML Markers
-        const pickupIcon = L.divIcon({
+        // Rapido-style Live GPS User Location Marker (anchored at real user GPS coordinates)
+        const userLocationIcon = L.divIcon({
             className: 'custom-leaflet-marker',
             html: `
         <div class="relative flex flex-col items-center group">
           <div class="relative flex items-center justify-center">
-            <span class="absolute w-10 h-10 rounded-full bg-emerald-400/40 animate-ping"></span>
-            <div class="w-5 h-5 rounded-full bg-emerald-500 ring-4 ring-emerald-400/60 shadow-[0_0_20px_#10b981]"></div>
+            <span class="absolute w-12 h-12 rounded-full bg-emerald-400/40 animate-ping"></span>
+            <span class="absolute w-7 h-7 rounded-full bg-emerald-400/50 animate-pulse"></span>
+            <div class="w-5 h-5 rounded-full bg-emerald-500 ring-4 ring-emerald-300 shadow-[0_0_20px_#10b981]"></div>
           </div>
           <div class="mt-1 px-2.5 py-1 rounded-xl bg-slate-950/90 text-white border border-emerald-500/50 text-[10px] font-black shadow-2xl flex items-center gap-1">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Pickup Point
+            Your GPS Location
           </div>
         </div>
       `,
@@ -242,13 +253,13 @@ export const MapView: React.FC<MapViewProps> = ({
             iconAnchor: [60, 30]
         });
 
-        L.marker([pickupLat, pickupLng], { icon: pickupIcon }).addTo(markersGroupRef.current);
+        L.marker(currentGps, { icon: userLocationIcon }).addTo(markersGroupRef.current);
         L.marker([dropoffLat, dropoffLng], { icon: dropoffIcon }).addTo(markersGroupRef.current);
 
         // Ambient Drivers
         MOCK_DRIVERS.forEach((d, idx) => {
-            const driverLat = mapCenter[0] + (idx === 0 ? 0.004 : idx === 1 ? -0.005 : 0.008);
-            const driverLng = mapCenter[1] + (idx === 0 ? -0.006 : idx === 1 ? 0.009 : -0.003);
+            const driverLat = currentGps[0] + (idx === 0 ? 0.004 : idx === 1 ? -0.005 : 0.008);
+            const driverLng = currentGps[1] + (idx === 0 ? -0.006 : idx === 1 ? 0.009 : -0.003);
 
             const driverIcon = L.divIcon({
                 className: 'custom-driver-marker',
@@ -395,7 +406,7 @@ export const MapView: React.FC<MapViewProps> = ({
                         {[
                             { id: 'cyber', label: 'Dark Cyber', icon: <Moon className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" /> },
                             { id: 'roadmap', label: 'Roadmap', icon: <Navigation className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" /> },
-                            { id: 'satellite', label: 'Satellite', icon: <Compass className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" /> },
+                            { id: 'satellite', label: 'Satellite', icon: <LocateFixed className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" /> },
                             { id: 'hybrid', label: 'Hybrid', icon: <Layers className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" /> }
                         ].map((style) => (
                             <button
@@ -459,16 +470,36 @@ export const MapView: React.FC<MapViewProps> = ({
                     <Minus className="w-5 h-5 text-[#0221bf] dark:text-cyan-400" />
                 </button>
 
-                {/* Recenter / Compass Button */}
+                {/* Recenter / Current Location Target Button */}
                 <button
                     onClick={() => {
-                        setMapCenter([41.8781, -87.6298]);
-                        setMapZoom(13);
+                        if ('geolocation' in navigator) {
+                            navigator.geolocation.getCurrentPosition(
+                                (position) => {
+                                    const { latitude, longitude } = position.coords;
+                                    const newCoords: [number, number] = [latitude, longitude];
+                                    setMapCenter(newCoords);
+                                    setMapZoom(17);
+                                    if (mapInstanceRef.current) {
+                                        mapInstanceRef.current.flyTo(newCoords, 17, { animate: true, duration: 1.2 });
+                                    }
+                                },
+                                (error) => {
+                                    console.warn('Geolocation error/denial:', error);
+                                    if (mapInstanceRef.current) {
+                                        mapInstanceRef.current.flyTo(mapCenter, 17, { animate: true, duration: 1.2 });
+                                    }
+                                },
+                                { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                            );
+                        } else if (mapInstanceRef.current) {
+                            mapInstanceRef.current.flyTo(mapCenter, 17, { animate: true, duration: 1.2 });
+                        }
                     }}
-                    className="w-12 h-12 rounded-2xl bg-white/95 dark:bg-[#051336]/90 border border-slate-200 dark:border-cyan-400/40 shadow-[0_10px_25px_rgba(0,0,0,0.2)] dark:shadow-[0_10px_25px_rgba(0,240,255,0.2)] flex items-center justify-center text-[#0221bf] dark:text-cyan-400 hover:scale-105 active:scale-95 transition-all backdrop-blur-xl"
-                    title="Recenter Map View"
+                    className="w-12 h-12 rounded-2xl bg-white/95 dark:bg-[#051336]/90 border border-slate-200 dark:border-cyan-400/40 shadow-[0_10px_25px_rgba(0,0,0,0.2)] dark:shadow-[0_10px_25px_rgba(0,240,255,0.2)] flex items-center justify-center text-[#0221bf] dark:text-cyan-400 hover:scale-105 active:scale-95 transition-all backdrop-blur-xl group"
+                    title="Go to Current Location"
                 >
-                    <Compass className="w-5 h-5 text-[#0221bf] dark:text-cyan-400 animate-spin-slow" />
+                    <LocateFixed className="w-5.5 h-5.5 text-[#0221bf] dark:text-cyan-400 group-hover:scale-110 transition-transform" />
                 </button>
 
             </div>
