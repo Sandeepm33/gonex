@@ -29,7 +29,7 @@ export const ActiveRideScreen: React.FC = () => {
             </div>
 
             {/* Active Driver Floating Panel */}
-            <div className="relative z-20 bg-white dark:bg-dark-card rounded-t-3xl border-t border-gray-200 dark:border-dark-border p-5 shadow-2xl space-y-4 animate-slideUp text-gray-900 dark:text-white">
+            <div className="relative z-20 bg-white/95 dark:bg-[#030A1C]/95 rounded-t-[36px] border-t-2 border-slate-300 dark:border-cyan-400/50 p-5 shadow-[0_-15px_40px_rgba(0,0,0,0.15)] space-y-4 animate-slideUp text-slate-900 dark:text-white backdrop-blur-2xl">
 
                 {/* Driver Card */}
                 <DriverCard

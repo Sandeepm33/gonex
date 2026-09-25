@@ -51,7 +51,7 @@ export const Sidebar: React.FC = () => {
             />
 
             {/* Drawer Container */}
-            <aside className="relative w-4/5 max-w-xs bg-white dark:bg-[#051336] h-full shadow-2xl flex flex-col justify-between z-10 overflow-y-auto border-r border-slate-200 dark:border-cyan-400/30 text-slate-900 dark:text-white backdrop-blur-2xl">
+            <aside className="relative w-4/5 max-w-xs glass-panel h-full shadow-2xl flex flex-col justify-between z-10 overflow-y-auto border-r border-slate-200 dark:border-cyan-400/30 text-slate-900 dark:text-white backdrop-blur-2xl">
 
                 {/* Top Header & User Profile Banner */}
                 <div className="p-5 bg-gradient-to-br from-[#0221bf] via-blue-700 to-[#011580] text-white relative overflow-hidden border-b border-cyan-400/30">

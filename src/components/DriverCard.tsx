@@ -16,13 +16,13 @@ export const DriverCard: React.FC<DriverCardProps> = ({
     onMessage,
 }) => {
     return (
-        <div className="p-4.5 rounded-3xl glass-panel shadow-2xl space-y-3.5 border border-slate-200 dark:border-cyan-400/30">
+        <div className="p-5 rounded-3xl glass-panel shadow-2xl space-y-4 border border-slate-300 dark:border-cyan-400/50 bg-white/95 dark:bg-[#030A1C]/90 overflow-hidden">
 
             {/* Top Driver Status Header */}
-            <div className="flex items-center justify-between pb-2.5 border-b border-slate-200 dark:border-cyan-500/20">
-                <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-[#0221bf] dark:text-cyan-400 flex items-center gap-1.5">
-                        <Zap className="w-3 h-3 text-[#0221bf] dark:text-cyan-400 animate-pulse" /> YOUR DRIVER IS EN ROUTE
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-cyan-500/20">
+                <div className="space-y-1">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#0221bf] dark:text-cyan-400 flex items-center gap-1.5 px-0.5">
+                        YOUR DRIVER IS EN ROUTE
                     </span>
                     <h2 className="text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
                         Arriving in <span className="text-[#0221bf] dark:text-cyan-400 animate-pulse">{eta}</span>

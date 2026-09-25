@@ -16,7 +16,7 @@ export const Header: React.FC<HeaderProps> = ({ title = 'GoNex Mobility', showBa
 
     return (
         <header className="relative z-40 px-3 pt-3 pb-1.5 bg-transparent pointer-events-none">
-            <div className="mx-auto flex items-center justify-between px-3 py-2 rounded-3xl bg-white/90 dark:bg-[#030A1C]/90 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_35px_rgba(0,240,255,0.15)] pointer-events-auto transition-all duration-300 border border-slate-200/80 dark:border-cyan-400/40 hover:border-[#0221bf]/40 dark:hover:border-cyan-400/70">
+            <div className="mx-auto flex items-center justify-between px-3 py-2 rounded-3xl glass-panel shadow-2xl pointer-events-auto transition-all duration-300 border border-slate-200/80 dark:border-cyan-400/40 hover:border-[#0221bf]/40 dark:hover:border-cyan-400/70">
 
                 {/* Left Action Icon & Brand */}
                 <div className="flex items-center gap-2.5 min-w-0">

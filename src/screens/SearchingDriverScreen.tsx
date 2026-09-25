@@ -26,7 +26,7 @@ export const SearchingDriverScreen: React.FC = () => {
             </div>
 
             {/* Searching Driver Cyber HUD Panel */}
-            <div className="relative z-20 glass-panel rounded-t-[40px] border-t border-slate-200 dark:border-cyan-400/30 p-6 shadow-2xl space-y-4 animate-slideUp text-slate-900 dark:text-white">
+            <div className="relative z-20 glass-panel rounded-t-[40px] border-t-2 border-slate-300 dark:border-cyan-400/50 p-6 shadow-2xl space-y-4 animate-slideUp text-slate-900 dark:text-white">
 
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3.5">
@@ -100,7 +100,7 @@ export const ActiveRideScreen: React.FC = () => {
             </div>
 
             {/* Active Driver Cyber Glass HUD */}
-            <div className="relative z-20 glass-panel rounded-t-[40px] border-t border-slate-200 dark:border-cyan-400/30 p-5 shadow-2xl space-y-4 animate-slideUp text-slate-900 dark:text-white">
+            <div className="relative z-20 glass-panel rounded-t-[40px] border-t-2 border-slate-300 dark:border-cyan-400/50 p-5 shadow-2xl space-y-4 animate-slideUp text-slate-900 dark:text-white">
 
                 {/* Driver Card Component */}
                 <DriverCard

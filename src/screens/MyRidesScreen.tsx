@@ -16,7 +16,7 @@ export const MyRidesScreen: React.FC = () => {
             <Header title="My Trips" showBack={true} />
 
             {/* Cyber Tabs Pill */}
-            <div className="flex glass-panel p-1 rounded-2xl my-4 border border-slate-200 dark:border-cyan-500/20 bg-white/80 dark:bg-[#051336]/80">
+            <div className="flex glass-panel p-1 rounded-2xl mt-2 mb-3 border border-slate-300 dark:border-cyan-500/30 bg-white/90 dark:bg-[#051336]/90 shadow-md">
                 <button
                     onClick={() => setTab('upcoming')}
                     className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all relative ${tab === 'upcoming'
@@ -38,10 +38,10 @@ export const MyRidesScreen: React.FC = () => {
             </div>
 
             {/* Rides List */}
-            <div className="flex-1 space-y-3 overflow-y-auto">
+            <div className="flex-1 space-y-3.5 overflow-y-auto">
                 {tab === 'upcoming' ? (
                     activeScheduledRides.length === 0 ? (
-                        <div className="text-center py-12 space-y-3 glass-card border border-slate-200 dark:border-cyan-500/20 rounded-3xl p-6 bg-white/90 dark:bg-slate-900/60">
+                        <div className="text-center py-12 space-y-3 glass-card border border-slate-300 dark:border-cyan-500/30 rounded-3xl p-6 bg-white/95 dark:bg-slate-900/80">
                             <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-900 text-[#0221bf] dark:text-cyan-400 flex items-center justify-center text-3xl mx-auto border border-slate-200 dark:border-cyan-500/30 shadow-xl">
                                 📅
                             </div>
@@ -60,9 +60,9 @@ export const MyRidesScreen: React.FC = () => {
                         activeScheduledRides.map((item) => (
                             <div
                                 key={item.id}
-                                className="p-4.5 rounded-3xl glass-card border border-slate-200 dark:border-cyan-400/40 space-y-3 hover:border-[#0221bf] dark:hover:border-cyan-400 transition-all shadow-xl text-slate-900 dark:text-white bg-white/90 dark:bg-slate-900/60 backdrop-blur-xl"
+                                className="p-5 rounded-3xl glass-card border border-slate-300 dark:border-cyan-400/50 space-y-3.5 hover:border-[#0221bf] dark:hover:border-cyan-400 transition-all shadow-xl text-slate-900 dark:text-white bg-white/95 dark:bg-[#030A1C]/90 backdrop-blur-xl overflow-hidden"
                             >
-                                <div className="flex items-center justify-between">
+                                <div className="flex items-center justify-between px-0.5">
                                     <span className="font-black text-sm text-[#0221bf] dark:text-cyan-400 flex items-center gap-1.5">
                                         <Car className="w-4 h-4" />
                                         {item.type} (Scheduled)
@@ -78,7 +78,7 @@ export const MyRidesScreen: React.FC = () => {
                                     <p className="truncate"><span className="text-slate-500 dark:text-gray-400 font-extrabold">Dropoff:</span> <strong className="text-slate-900 dark:text-white">{item.destination}</strong></p>
                                 </div>
 
-                                <div className="flex items-center justify-between pt-1 text-xs font-bold">
+                                <div className="flex items-center justify-between pt-1 text-xs font-bold px-0.5">
                                     <span className="text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
                                         <Calendar className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" />
                                         Date: <strong className="text-slate-900 dark:text-white font-black">{item.scheduledDate}</strong>
@@ -101,9 +101,9 @@ export const MyRidesScreen: React.FC = () => {
                     rideHistory.map((item) => (
                         <div
                             key={item.id}
-                            className="p-4.5 rounded-3xl glass-card border border-slate-200 dark:border-cyan-500/20 space-y-3 hover:border-[#0221bf] dark:hover:border-cyan-400 transition-all shadow-xl text-slate-900 dark:text-white bg-white/90 dark:bg-slate-900/60 backdrop-blur-xl"
+                            className="p-5 rounded-3xl glass-card border border-slate-300 dark:border-cyan-400/50 space-y-3.5 hover:border-[#0221bf] dark:hover:border-cyan-400 transition-all shadow-xl text-slate-900 dark:text-white bg-white/95 dark:bg-[#030A1C]/90 backdrop-blur-xl overflow-hidden"
                         >
-                            <div className="flex items-center justify-between">
+                            <div className="flex items-center justify-between px-0.5">
                                 <span className="font-black text-sm text-[#0221bf] dark:text-cyan-400 flex items-center gap-1.5">
                                     <Car className="w-4 h-4" />
                                     {item.type}
