@@ -46,7 +46,7 @@ export const ProfileScreen: React.FC = () => {
                         </button>
                     </div>
                     <h2 className="text-lg font-black mt-3 text-slate-900 dark:text-white flex items-center gap-1.5">
-                        {firstName} {lastName} <Sparkles className="w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
+                        {firstName} {lastName} 
                     </h2>
                     <p className="text-xs text-slate-600 dark:text-cyan-200/70 font-semibold">{email}</p>
                 </div>

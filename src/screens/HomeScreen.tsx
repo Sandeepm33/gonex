@@ -95,7 +95,7 @@ export const HomeScreen: React.FC = () => {
                     <div>
                         <div className="flex items-center justify-between mb-2">
                             <h3 className="text-[10px] font-black uppercase tracking-widest text-[#0221bf] dark:text-cyan-400 flex items-center gap-1">
-                                <Sparkles className="w-3 h-3" /> Frequent Destinations
+                                 Frequent Destinations
                             </h3>
                             <span className="text-[9px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider">Fast dispatch</span>
                         </div>

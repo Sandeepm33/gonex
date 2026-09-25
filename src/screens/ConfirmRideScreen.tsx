@@ -143,7 +143,7 @@ export const ConfirmRideScreen: React.FC = () => {
                 {/* Selected Vehicle Card Preview */}
                 <div className="flex items-center justify-between p-4.5 rounded-3xl bg-gradient-to-r from-[#0221bf] via-blue-700 to-indigo-800 text-white border border-blue-400/40 dark:border-cyan-400 shadow-2xl">
                     <div className="flex items-center gap-3.5">
-                        <div className="w-16 h-16 p-1 rounded-2xl bg-white/10 dark:bg-slate-950/80 border border-white/20 dark:border-cyan-500/30 flex items-center justify-center shrink-0">
+                        <div className="w-16 h-16    dark:border-cyan-500/30 flex items-center justify-center shrink-0">
                             {typeof selectedRide.image === 'string' && (selectedRide.image.startsWith('http') || selectedRide.image.startsWith('/') || selectedRide.image.startsWith('data:')) ? (
                                 <img src={selectedRide.image} alt={selectedRide.name} className="w-full h-full object-contain rounded-xl drop-shadow-md" />
                             ) : selectedRide.id === 'standard-x' ? (
@@ -156,7 +156,7 @@ export const ConfirmRideScreen: React.FC = () => {
                         </div>
                         <div>
                             <h3 className="font-extrabold text-lg text-white leading-tight flex items-center gap-1.5">
-                                {selectedRide.name} <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
+                                {selectedRide.name} 
                             </h3>
                             <p className="text-xs text-cyan-100 font-semibold">Capacity: {selectedRide.capacity} Passenger{selectedRide.capacity > 1 ? 's' : ''}</p>
                         </div>

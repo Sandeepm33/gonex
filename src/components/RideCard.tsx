@@ -35,7 +35,7 @@ export const RideCard: React.FC<RideCardProps> = ({
                     : 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-500'
                     }`}>
                     <span className="flex items-center gap-1.5">
-                        <Sparkles className="w-3.5 h-3.5 text-cyan-200 animate-pulse" /> {ride.badge}
+                         {ride.badge}
                     </span>
                     <span className="font-extrabold opacity-95 text-[9px] tracking-wider">{ride.capacity} Passengers</span>
                 </div>
@@ -101,7 +101,7 @@ export const RideCard: React.FC<RideCardProps> = ({
                     className="mx-3.5 mb-3.5 p-4 rounded-2xl bg-slate-50 dark:bg-[#030A1C]/90 border border-slate-200 dark:border-cyan-500/30 space-y-2 text-xs font-bold animate-fadeIn backdrop-blur-xl"
                 >
                     <div className="text-[10px] font-black uppercase tracking-widest text-[#0221bf] dark:text-cyan-400 mb-1.5 flex items-center gap-1.5">
-                        <Sparkles className="w-3.5 h-3.5 text-cyan-400" /> Transparent Pricing Formula
+                        {/* <Sparkles className="w-3.5 h-3.5 text-cyan-400" /> Transparent Pricing Formula */}
                     </div>
 
                     <div className="flex justify-between text-slate-600 dark:text-slate-300 text-[11px] font-extrabold">

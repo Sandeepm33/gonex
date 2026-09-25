@@ -22,7 +22,7 @@ export const RideCompletedScreen: React.FC = () => {
 
                 <div>
                     <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight flex items-center justify-center gap-1.5">
-                        Trip Completed! <Sparkles className="w-5 h-5 text-[#0221bf] dark:text-cyan-400" />
+                        Trip Completed! 
                     </h1>
                     <p className="text-xs text-slate-600 dark:text-cyan-200/70 mt-1 font-semibold">
                         Your ride ended safely. Thank you for using GoNex.

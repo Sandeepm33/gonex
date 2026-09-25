@@ -83,7 +83,7 @@ export const HelpScreen: React.FC = () => {
 
             <div className="mt-3 mb-auto space-y-4 max-w-md mx-auto w-full">
                 <h2 className="text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
-                    How can we help? <Sparkles className="w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
+                    How can we help? 
                 </h2>
                 <div className="space-y-3">
                     {[

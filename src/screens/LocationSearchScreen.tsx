@@ -25,7 +25,7 @@ export const LocationSearchScreen: React.FC = () => {
                 </button>
                 <div>
                     <h1 className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
-                        Plan Journey <Sparkles className="w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
+                        Plan Journey
                     </h1>
                     <p className="text-xs text-slate-600 dark:text-cyan-200/70 font-semibold">Select pickup & destination points</p>
                 </div>
