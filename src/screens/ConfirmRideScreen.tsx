@@ -29,7 +29,7 @@ export const ConfirmRideScreen: React.FC = () => {
         <div className="flex flex-col min-h-screen cyber-bg-dark p-5 text-white transition-colors duration-200 select-none">
             <Header title="Confirm Booking" showBack={true} />
 
-            <div className="my-auto space-y-4 max-w-md mx-auto w-full pt-2">
+            <div className="mt-3 mb-auto space-y-4 max-w-md mx-auto w-full">
 
                 {/* Ride Type Selector Pill: Ride Now vs Book for Later */}
                 <div className="p-1 rounded-2xl glass-panel border border-slate-200 dark:border-cyan-400/30 flex gap-1 shadow-lg">
@@ -37,10 +37,10 @@ export const ConfirmRideScreen: React.FC = () => {
                         onClick={() => setBookingType('now')}
                         className={`flex-1 py-3 rounded-xl font-extrabold text-xs flex items-center justify-center gap-2 transition-all ${bookingType === 'now'
                             ? 'bg-gradient-to-r from-[#0221bf] to-cyan-500 text-white shadow-md shadow-cyan-500/30 border border-cyan-300/40'
-                            : 'text-slate-500 dark:text-gray-400 hover:text-white'
+                            : 'text-slate-700 dark:text-gray-300 hover:text-[#0221bf] dark:hover:text-cyan-300 hover:bg-slate-200/60 dark:hover:bg-slate-800/60'
                             }`}
                     >
-                        <Zap className="w-4 h-4 text-cyan-300" />
+                        <Zap className={`w-4 h-4 ${bookingType === 'now' ? 'text-white' : 'text-[#0221bf] dark:text-cyan-400'}`} />
                         <span>Ride Now (Instant)</span>
                     </button>
 
@@ -48,10 +48,10 @@ export const ConfirmRideScreen: React.FC = () => {
                         onClick={() => setBookingType('later')}
                         className={`flex-1 py-3 rounded-xl font-extrabold text-xs flex items-center justify-center gap-2 transition-all ${bookingType === 'later'
                             ? 'bg-gradient-to-r from-[#0221bf] to-cyan-500 text-white shadow-md shadow-cyan-500/30 border border-cyan-300/40'
-                            : 'text-slate-500 dark:text-gray-400 hover:text-white'
+                            : 'text-slate-700 dark:text-gray-300 hover:text-[#0221bf] dark:hover:text-cyan-300 hover:bg-slate-200/60 dark:hover:bg-slate-800/60'
                             }`}
                     >
-                        <Calendar className="w-4 h-4 text-cyan-300" />
+                        <Calendar className={`w-4 h-4 ${bookingType === 'later' ? 'text-white' : 'text-[#0221bf] dark:text-cyan-400'}`} />
                         <span>Book for Later</span>
                     </button>
                 </div>
