@@ -12,7 +12,7 @@ export const SearchingDriverScreen: React.FC = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             navigate('active-ride');
-        }, 3200);
+        }, 0);
         return () => clearTimeout(timer);
     }, [navigate]);
 

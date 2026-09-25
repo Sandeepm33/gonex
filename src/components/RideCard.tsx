@@ -61,10 +61,10 @@ export const RideCard: React.FC<RideCardProps> = ({
                         <div className="flex items-center gap-2 flex-wrap">
                             <h3 className="font-black text-base text-slate-900 dark:text-white leading-none tracking-tight">{ride.name}</h3>
                             <span className="shrink-0 px-2 py-0.5 rounded-md bg-blue-50 dark:bg-cyan-500/20 border border-blue-200 dark:border-cyan-400/40 text-[#0221bf] dark:text-cyan-300 text-[10px] font-black flex items-center gap-1">
-                                <Users className="w-3 h-3" /> {ride.capacity}
+                                <Users className="w-3 h-3 text-[#0221bf] dark:text-cyan-400" /> {ride.capacity}
                             </span>
                         </div>
-                        <p className="text-xs text-slate-600 dark:text-gray-300 font-extrabold truncate">{ride.description}</p>
+                        <p className="text-xs text-slate-700 dark:text-gray-300 font-extrabold truncate">{ride.description}</p>
                         <div className="flex items-center gap-2 text-[11px] font-black text-emerald-600 dark:text-emerald-400">
                             <span className="flex items-center gap-1">
                                 <Clock className="w-3.5 h-3.5" /> {ride.eta}
@@ -73,9 +73,9 @@ export const RideCard: React.FC<RideCardProps> = ({
                     </div>
                 </div>
 
-                {/* Right: Price & Details button */}
+                {/* Right: Highlighted Price & Details button */}
                 <div className="text-right shrink-0 space-y-1.5">
-                    <span className="block text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+                    <span className="block text-2xl font-black text-[#0221bf] dark:text-cyan-400 tracking-tight drop-shadow-sm">
                         ${fare.finalFare.toFixed(2)}
                     </span>
 

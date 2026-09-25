@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreditCard, Plus, Check, Trash2, ArrowLeft, Sparkles } from 'lucide-react';
+import { CreditCard, Plus, Check, Trash2, ArrowLeft, Sparkles, Smartphone, Banknote } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Sidebar } from '../components/Sidebar';
 import { useRide } from '../context/RideContext';
@@ -12,7 +12,7 @@ export const PaymentMethodsScreen: React.FC = () => {
             <Sidebar />
             <Header title="Payment Options" showBack={true} />
 
-            <div className="my-auto space-y-4 max-w-md mx-auto w-full pt-3">
+            <div className="mt-2 mb-auto space-y-4 max-w-md mx-auto w-full">
                 <h2 className="text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-widest flex items-center gap-1">
                     <Sparkles className="w-3 h-3" /> Saved Cyber Payment Options
                 </h2>
@@ -31,7 +31,13 @@ export const PaymentMethodsScreen: React.FC = () => {
                             >
                                 <div className="flex items-center gap-3.5">
                                     <div className="w-11 h-11 rounded-2xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-cyan-500/30 flex items-center justify-center text-xl shadow-inner">
-                                        {method.type === 'Visa' ? '💳' : method.type === 'Mastercard' ? '💳' : method.type === 'ApplePay' ? '🍏' : '💵'}
+                                        {method.type === 'Visa' || method.type === 'Mastercard' ? (
+                                            <CreditCard className="w-5 h-5 text-[#0221bf] dark:text-cyan-400" />
+                                        ) : method.type === 'ApplePay' ? (
+                                            <Smartphone className="w-5 h-5 text-[#0221bf] dark:text-cyan-400" />
+                                        ) : (
+                                            <Banknote className="w-5 h-5 text-emerald-500" />
+                                        )}
                                     </div>
                                     <div>
                                         <h3 className="font-extrabold text-sm text-slate-900 dark:text-white">

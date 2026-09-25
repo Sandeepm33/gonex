@@ -125,17 +125,17 @@ export const ConfirmRideScreen: React.FC = () => {
                         <span className="w-3.5 h-3.5 rounded-full bg-emerald-500 shadow-lg" />
                         <div>
                             <span className="text-[10px] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">PICKUP ADDRESS</span>
-                            <p className="text-xs font-extrabold text-slate-900 dark:text-white">{pickup}</p>
+                            <p className="text-xs font-black text-slate-900 dark:text-white">{pickup}</p>
                         </div>
                     </div>
 
                     <div className="border-t border-dashed border-slate-200 dark:border-cyan-500/20 ml-7" />
 
                     <div className="flex items-center gap-3">
-                        <span className="w-3.5 h-3.5 rounded-full bg-[#0221bf] ring-2 ring-blue-400 dark:ring-cyan-400 shadow-lg" />
+                        <span className="w-3.5 h-3.5 rounded-full bg-[#0221bf] dark:bg-cyan-400 ring-2 ring-blue-400 dark:ring-cyan-300 shadow-lg" />
                         <div>
                             <span className="text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-wider">DESTINATION</span>
-                            <p className="text-xs font-extrabold text-slate-900 dark:text-white">{destination}</p>
+                            <p className="text-xs font-black text-slate-900 dark:text-white">{destination}</p>
                         </div>
                     </div>
                 </div>

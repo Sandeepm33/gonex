@@ -14,7 +14,7 @@ export const SettingsScreen: React.FC = () => {
             <Sidebar />
             <Header title="Settings" showBack={true} />
 
-            <div className="my-auto space-y-5 max-w-md mx-auto w-full pt-3">
+            <div className="mt-3 mb-auto space-y-5 max-w-md mx-auto w-full">
 
                 {/* Account Section */}
                 <div>
@@ -81,7 +81,7 @@ export const HelpScreen: React.FC = () => {
             <Sidebar />
             <Header title="Help Center" showBack={true} />
 
-            <div className="my-auto space-y-4 max-w-md mx-auto w-full pt-3">
+            <div className="mt-3 mb-auto space-y-4 max-w-md mx-auto w-full">
                 <h2 className="text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
                     How can we help? <Sparkles className="w-4 h-4 text-[#0221bf] dark:text-cyan-400" />
                 </h2>
@@ -109,7 +109,7 @@ export const TermsScreen: React.FC = () => {
             <Sidebar />
             <Header title="Terms & Conditions" showBack={true} />
 
-            <div className="my-auto space-y-4 max-w-md mx-auto w-full pt-3 text-xs font-semibold leading-relaxed text-slate-600 dark:text-cyan-200/80">
+            <div className="mt-3 mb-auto space-y-4 max-w-md mx-auto w-full text-xs font-semibold leading-relaxed text-slate-600 dark:text-cyan-200/80">
                 <h2 className="text-xl font-black text-slate-900 dark:text-white">GoNex Mobility Terms</h2>
                 <div className="p-5 rounded-3xl glass-card border border-slate-200 dark:border-cyan-400/20 space-y-3 text-slate-800 dark:text-white">
                     <p>1. Passenger safety and verified driver credentials guarantee.</p>

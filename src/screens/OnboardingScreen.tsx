@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
+import { ChevronRight, ArrowRight, Sparkles, Car, Zap, Navigation } from 'lucide-react';
 import { useRide } from '../context/RideContext';
 import gonexLogo from '../assets/gonexlogo.avif';
 
@@ -11,19 +11,19 @@ export const OnboardingScreen: React.FC = () => {
         {
             title: "Future of Urban Mobility",
             subtitle: "Experience high-speed, instant ride dispatches with transparent pricing and cyber live tracking.",
-            icon: "🏎️",
+            icon: <Car className="w-16 h-16 text-[#0221bf] dark:text-cyan-400" />,
             bgGradient: "from-[#0221bf] to-cyan-500/30",
         },
         {
             title: "Choose Your Fleet",
             subtitle: "Select GoNex Mini, GoNex XL, or GoNex EV based on your passenger capacity and luxury needs.",
-            icon: "⚡",
+            icon: <Zap className="w-16 h-16 text-[#0221bf] dark:text-cyan-400" />,
             bgGradient: "from-blue-600 to-indigo-900/40",
         },
         {
             title: "Seamless Cyber Navigation",
             subtitle: "Track your route trajectory with real-time vector sonar maps and verified pro drivers.",
-            icon: "📍",
+            icon: <Navigation className="w-16 h-16 text-[#0221bf] dark:text-cyan-400" />,
             bgGradient: "from-emerald-500/40 to-cyan-500/30",
         }
     ];

@@ -13,7 +13,8 @@ import {
     Check,
     X,
     Calendar,
-    Clock
+    Clock,
+    Moon
 } from 'lucide-react';
 import { useRide, MapStyleType } from '../context/RideContext';
 import { useTheme } from '../context/ThemeContext';
@@ -228,8 +229,8 @@ export const MapView: React.FC<MapViewProps> = ({
         <div class="relative flex flex-col items-center group">
           <div class="relative flex items-center justify-center">
             <span class="absolute w-12 h-12 rounded-full bg-cyan-400/40 animate-ping"></span>
-            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#0221bf] to-cyan-400 text-white flex items-center justify-center shadow-[0_0_25px_#00f0ff] ring-4 ring-cyan-300/50 font-bold">
-              📍
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#0221bf] to-cyan-400 text-white flex items-center justify-center shadow-[0_0_25px_#00f0ff] ring-4 ring-cyan-300/50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
           </div>
           <div class="mt-1 px-2.5 py-1 rounded-xl bg-slate-950/90 text-cyan-300 border border-cyan-400/50 text-[10px] font-black shadow-2xl flex items-center gap-1">
@@ -252,8 +253,8 @@ export const MapView: React.FC<MapViewProps> = ({
             const driverIcon = L.divIcon({
                 className: 'custom-driver-marker',
                 html: `
-          <div class="p-2 rounded-2xl bg-slate-900/90 border border-cyan-400/50 shadow-[0_0_15px_rgba(0,240,255,0.4)] text-base hover:scale-125 transition-transform cursor-pointer">
-            🏎️
+          <div class="p-2 rounded-2xl bg-slate-900/90 border border-cyan-400/50 shadow-[0_0_15px_rgba(0,240,255,0.4)] hover:scale-125 transition-transform cursor-pointer flex items-center justify-center text-cyan-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
           </div>
         `,
                 iconSize: [36, 36],
@@ -392,10 +393,10 @@ export const MapView: React.FC<MapViewProps> = ({
                     </div>
                     <div className="grid grid-cols-2 gap-2 text-xs font-extrabold">
                         {[
-                            { id: 'cyber', label: 'Dark Cyber', icon: '🌃' },
-                            { id: 'roadmap', label: 'Roadmap', icon: '🗺️' },
-                            { id: 'satellite', label: 'Satellite', icon: '🛰️' },
-                            { id: 'hybrid', label: 'Hybrid', icon: '🌐' }
+                            { id: 'cyber', label: 'Dark Cyber', icon: <Moon className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" /> },
+                            { id: 'roadmap', label: 'Roadmap', icon: <Navigation className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" /> },
+                            { id: 'satellite', label: 'Satellite', icon: <Compass className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" /> },
+                            { id: 'hybrid', label: 'Hybrid', icon: <Layers className="w-3.5 h-3.5 text-[#0221bf] dark:text-cyan-400" /> }
                         ].map((style) => (
                             <button
                                 key={style.id}

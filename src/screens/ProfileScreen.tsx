@@ -28,7 +28,7 @@ export const ProfileScreen: React.FC = () => {
             <Sidebar />
             <Header title="User Profile" showBack={true} />
 
-            <form onSubmit={handleSave} className="my-auto space-y-4 max-w-md mx-auto w-full pt-2">
+            <form onSubmit={handleSave} className="mt-2 mb-auto space-y-4 max-w-md mx-auto w-full">
 
                 {/* Avatar with Halo Ring */}
                 <div className="flex flex-col items-center mb-3">
@@ -120,7 +120,7 @@ export const NotificationsScreen: React.FC = () => {
             <Sidebar />
             <Header title="Notifications" showBack={true} />
 
-            <div className="my-auto space-y-3 max-w-md mx-auto w-full pt-3">
+            <div className="mt-2 mb-auto space-y-3 max-w-md mx-auto w-full">
                 {MOCK_NOTIFICATIONS.map((n) => (
                     <div
                         key={n.id}
