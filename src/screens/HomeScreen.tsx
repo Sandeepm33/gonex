@@ -19,7 +19,7 @@ export const HomeScreen: React.FC = () => {
             {/* 2. Floating Header (High Z-Index above Map) */}
             {!isMapMaximized && (
                 <div className="relative z-30 pointer-events-none">
-                    <Header title="GoNex Cyber 2.0" showBack={false} />
+                    <Header title="GoNex " showBack={false} />
                 </div>
             )}
 

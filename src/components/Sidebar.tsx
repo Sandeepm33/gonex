@@ -66,9 +66,9 @@ export const Sidebar: React.FC = () => {
                                 <span className="font-black text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-cyan-300 uppercase block leading-none">
                                     GoNex
                                 </span>
-                                <span className="text-[9px] font-black text-cyan-300 uppercase tracking-widest flex items-center gap-1 mt-0.5">
+                                {/* <span className="text-[9px] font-black text-cyan-300 uppercase tracking-widest flex items-center gap-1 mt-0.5">
                                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" /> VIP EDITION
-                                </span>
+                                </span> */}
                             </div>
                         </div>
                         <button
