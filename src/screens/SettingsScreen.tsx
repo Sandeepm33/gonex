@@ -19,7 +19,7 @@ export const SettingsScreen: React.FC = () => {
                 {/* Account Section */}
                 <div>
                     <h3 className="text-[10px] font-black uppercase text-[#0221bf] dark:text-cyan-400 tracking-widest mb-2 flex items-center gap-1">
-                        <Sparkles className="w-3 h-3" /> Account Preferences
+                       Account Preferences
                     </h3>
                     <div className="glass-card rounded-3xl border border-slate-200 dark:border-cyan-400/20 divide-y divide-slate-200 dark:divide-cyan-500/10 text-xs font-bold shadow-xl">
                         <button onClick={() => navigate('profile')} className="w-full flex items-center justify-between p-4 hover:bg-slate-100 dark:hover:bg-slate-800/60 rounded-t-3xl transition-colors text-slate-900 dark:text-white">
