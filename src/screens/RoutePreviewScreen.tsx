@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, MapPin, Navigation, Clock, ChevronRight, Sparkles, Car } from 'lucide-react';
+import { ArrowLeft, MapPin, Navigation, Clock, ChevronRight, Sparkles, Car, Route as RouteIcon } from 'lucide-react';
 import { Header } from '../components/Header';
 import { MapView } from '../components/MapView';
 import { RideCard } from '../components/RideCard';
@@ -18,70 +18,98 @@ export const RoutePreviewScreen: React.FC = () => {
         fareSheetRideId,
         setFareSheetRideId,
         navigate,
+        routeOptions,
+        selectedRouteIndex,
+        setSelectedRouteIndex,
+        isMapMaximized
     } = useRide();
 
     return (
         <div className="relative flex flex-col h-full min-h-screen cyber-bg-dark text-white overflow-hidden select-none">
-            <Header title="Select Vehicle" showBack={true} />
+            {!isMapMaximized && <Header title="Select Vehicle" showBack={true} />}
 
             {/* Interactive Vector Map View */}
             <div className="relative flex-1 w-full min-h-[220px]">
                 <MapView showRoute={true} showDriver={false} />
             </div>
 
-            {/* Bottom Floating Vehicle Selection Drawer Panel */}
-            <div className="relative z-20 glass-panel rounded-t-[36px] border-t border-slate-200 dark:border-cyan-400/30 p-5 shadow-2xl space-y-3.5 max-h-[60vh] flex flex-col justify-between animate-slideUp text-slate-900 dark:text-white">
-
-                {/* Compact Route Header */}
-                <div className="flex items-center justify-between pb-2.5 border-b border-slate-200 dark:border-cyan-500/20 shrink-0">
-                    <div className="flex items-center gap-4 text-xs font-bold text-slate-900 dark:text-white">
-                        <span>Distance: <strong className="text-slate-900 dark:text-cyan-300 font-extrabold">{distanceMiles} mi</strong></span>
-                        <span>Est. Time: <strong className="text-slate-900 dark:text-cyan-300 font-extrabold">{estimatedMinutes} min</strong></span>
-                    </div>
-                    <span className="text-[10px] font-black uppercase text-slate-900 dark:text-cyan-400 bg-slate-100 dark:bg-cyan-500/10 px-2.5 py-1 rounded-xl border border-slate-200 dark:border-cyan-500/30">
-                        {RIDE_TYPES.length} Available
+            {/* Route Alternative Selector Bar */}
+            {!isMapMaximized && routeOptions && routeOptions.length > 1 && (
+                <div className="relative z-30 px-4 py-2 bg-slate-950/90 border-t border-b border-cyan-500/20 backdrop-blur-xl flex items-center gap-2 overflow-x-auto">
+                    <span className="text-[10px] font-black uppercase text-cyan-400 shrink-0 flex items-center gap-1">
+                        <RouteIcon className="w-3.5 h-3.5" /> Routes:
                     </span>
-                </div>
-
-                {/* Route Address Summary */}
-                <div className="flex items-center gap-3 text-xs font-bold text-slate-900 dark:text-white shrink-0">
-                    <div className="flex items-center gap-1.5 truncate flex-1">
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
-                        <span className="truncate text-slate-700 dark:text-gray-300 font-bold">{pickup}</span>
-                    </div>
-                    <span className="text-slate-400 dark:text-cyan-400">➔</span>
-                    <div className="flex items-center gap-1.5 truncate flex-1">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#0221bf] dark:bg-cyan-400 shrink-0" />
-                        <span className="truncate text-slate-900 dark:text-white font-black">{destination}</span>
-                    </div>
-                </div>
-
-                {/* Scrollable Vehicle Cards List */}
-                <div className="space-y-3 overflow-y-auto pr-1 flex-1 max-h-[280px]">
-                    {RIDE_TYPES.map((ride) => (
-                        <RideCard
-                            key={ride.id}
-                            ride={ride}
-                            isSelected={selectedRide.id === ride.id}
-                            onSelect={() => setSelectedRideId(ride.id)}
-                            onOpenDetails={() => setFareSheetRideId(ride.id)}
-                        />
+                    {routeOptions.map((route, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => setSelectedRouteIndex(idx)}
+                            className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all shrink-0 flex items-center gap-2 ${selectedRouteIndex === idx
+                                ? 'bg-gradient-to-r from-[#0221bf] to-cyan-500 text-white shadow-md shadow-cyan-500/30 border border-cyan-300'
+                                : 'bg-slate-800/80 text-slate-300 border border-slate-700 hover:border-cyan-400/40'
+                                }`}
+                        >
+                            <span>{route.name}</span>
+                            <span className="text-[10px] opacity-80">({route.durationMinutes}m / {route.distanceMiles}mi)</span>
+                        </button>
                     ))}
                 </div>
+            )}
 
-                {/* Direct Confirm Vehicle Action Button */}
-                <div className="pt-1 shrink-0">
-                    <button
-                        onClick={() => navigate('confirm-ride')}
-                        className="w-full py-3.5 bg-gradient-to-r from-[#0221bf] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2 transition-all active:scale-98 border border-cyan-300/30"
-                    >
-                        <Car className="w-4.5 h-4.5" />
-                        <span>Confirm {selectedRide.name}</span>
-                        <ChevronRight className="w-5 h-5" />
-                    </button>
+            {/* Bottom Floating Vehicle Selection Drawer Panel */}
+            {!isMapMaximized && (
+                <div className="relative z-20 glass-panel rounded-t-[36px] border-t border-slate-200 dark:border-cyan-400/30 p-5 shadow-2xl space-y-3.5 max-h-[60vh] flex flex-col justify-between animate-slideUp text-slate-900 dark:text-white">
+
+                    {/* Compact Route Header */}
+                    <div className="flex items-center justify-between pb-2.5 border-b border-slate-200 dark:border-cyan-500/20 shrink-0">
+                        <div className="flex items-center gap-4 text-xs font-bold text-slate-900 dark:text-white">
+                            <span>Distance: <strong className="text-slate-900 dark:text-cyan-300 font-extrabold">{distanceMiles} mi</strong></span>
+                            <span>Est. Time: <strong className="text-slate-900 dark:text-cyan-300 font-extrabold">{estimatedMinutes} min</strong></span>
+                        </div>
+                        <span className="text-[10px] font-black uppercase text-slate-900 dark:text-cyan-400 bg-slate-100 dark:bg-cyan-500/10 px-2.5 py-1 rounded-xl border border-slate-200 dark:border-cyan-500/30">
+                            {RIDE_TYPES.length} Available
+                        </span>
+                    </div>
+
+                    {/* Route Address Summary */}
+                    <div className="flex items-center gap-3 text-xs font-bold text-slate-900 dark:text-white shrink-0">
+                        <div className="flex items-center gap-1.5 truncate flex-1">
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
+                            <span className="truncate text-slate-700 dark:text-gray-300 font-bold">{pickup}</span>
+                        </div>
+                        <span className="text-slate-400 dark:text-cyan-400">➔</span>
+                        <div className="flex items-center gap-1.5 truncate flex-1">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#0221bf] dark:bg-cyan-400 shrink-0" />
+                            <span className="truncate text-slate-900 dark:text-white font-black">{destination}</span>
+                        </div>
+                    </div>
+
+                    {/* Scrollable Vehicle Cards List */}
+                    <div className="space-y-3 overflow-y-auto pr-1 flex-1 max-h-[280px]">
+                        {RIDE_TYPES.map((ride) => (
+                            <RideCard
+                                key={ride.id}
+                                ride={ride}
+                                isSelected={selectedRide.id === ride.id}
+                                onSelect={() => setSelectedRideId(ride.id)}
+                                onOpenDetails={() => setFareSheetRideId(ride.id)}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Direct Confirm Vehicle Action Button */}
+                    <div className="pt-1 shrink-0">
+                        <button
+                            onClick={() => navigate('confirm-ride')}
+                            className="w-full py-3.5 bg-gradient-to-r from-[#0221bf] via-blue-600 to-cyan-500 hover:from-blue-600 hover:to-cyan-400 text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2 transition-all active:scale-98 border border-cyan-300/30"
+                        >
+                            <Car className="w-4.5 h-4.5" />
+                            <span>Confirm {selectedRide.name}</span>
+                            <ChevronRight className="w-5 h-5" />
+                        </button>
+                    </div>
+
                 </div>
-
-            </div>
+            )}
 
             {/* Fare Breakdown Sheet Modal */}
             <RideFareSheet
